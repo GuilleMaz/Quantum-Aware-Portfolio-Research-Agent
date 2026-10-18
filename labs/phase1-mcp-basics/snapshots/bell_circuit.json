@@ -1,0 +1,18 @@
+{
+  "counts": {
+    "11": 505,
+    "00": 519
+  },
+  "shots": 1024,
+  "raw": {
+    "status": "COMPLETED",
+    "backend": "aer_simulator",
+    "shots": 1024,
+    "seed": null,
+    "time_taken": 0.016506433486938477,
+    "counts": {
+      "11": 505,
+      "00": 519
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "rx_sin_params_circuit": {
+    "num_qubits": 1,
+    "num_clbits": 1,
+    "operations": [
+      {
+        "name": "rx",
+        "qubits": [
+          0
+        ],
+        "params": [
+          0.5
+        ]
+      },
+      {
+        "name": "measure",
+        "qubits": [
+          0
+        ],
+        "params": [],
+        "clbits": [
+          0
+        ]
+      }
+    ],
+    "name": "circuit"
+  },
+  "rx_con_params_circuit": {
+    "num_qubits": 1,
+    "num_clbits": 1,
+    "operations": [
+      {
+        "name": "rx",
+        "qubits": [
+          0
+        ],
+        "params": [
+          1.0
+        ]
+      },
+      {
+        "name": "measure",
+        "qubits": [
+          0
+        ],
+        "params": [],
+        "clbits": [
+          0
+        ]
+      }
+    ],
+    "name": "circuit"
+  },
+  "run_sin_params": {
+    "status": "COMPLETED",
+    "backend": "aer_simulator",
+    "shots": 1024,
+    "seed": 7,
+    "time_taken": 0.032303571701049805,
+    "counts": {
+      "0": 961,
+      "1": 63
+    }
+  },
+  "run_con_params": {
+    "status": "COMPLETED",
+    "backend": "aer_simulator",
+    "shots": 1024,
+    "seed": 7,
+    "time_taken": 0.0043108463287353516,
+    "counts": {
+      "1": 255,
+      "0": 769
+    }
+  },
+  "conclusion": "add_gate_tool con gate_name='rx' y sin params NO lanza error. El circuito resultante lleva rx con param por defecto 0.5 (ver el dict), y la distribucion de medicion difiere de la de rx(1.0). Fallo silencioso: el agente cree que funciono."
+}

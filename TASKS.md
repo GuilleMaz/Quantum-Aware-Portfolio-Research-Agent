@@ -41,42 +41,44 @@
 
 ### 1.A — Servidor financiero
 
-- [ ] **1.1** `uv sync` y comprobar que el venv arranca
-- [ ] **1.2** Lanzar el server y hacer el handshake `initialize` a mano
+- [x] **1.1** `uv sync` y comprobar que el venv arranca
+- [x] **1.2** Lanzar el server y hacer el handshake `initialize` a mano
       (`uvx --from financial-mcp-server --with "mcp<2" financial-mcp`)
-- [ ] **1.3** `list_tools.py`: listar las 42 herramientas → `snapshots/financial_tools.json`
-- [ ] **1.4** `call_tool.py`: `get_price("AAPL")` → guardar salida real
-- [ ] **1.5** `call_tool.py`: `get_fundamentals("AAPL")` → guardar salida real
-- [ ] **1.6** `call_tool.py`: `get_momentum("AAPL")` → **trae la volatilidad** →
+- [x] **1.3** `list_tools.py`: listar las 42 herramientas → `snapshots/financial_tools.json`
+- [x] **1.4** `call_tool.py`: `get_price("AAPL")` → guardar salida real
+- [x] **1.5** `call_tool.py`: `get_fundamentals("AAPL")` → guardar salida real
+- [x] **1.6** `call_tool.py`: `get_momentum("AAPL")` → **trae la volatilidad** →
       guardar
-- [ ] **1.7** Leer y parsear el `{"result": "<json string>"}` que devuelve.
+- [x] **1.7** Leer y parsear el `{"result": "<json string>"}` que devuelve.
       Anotar el problema del doble encoding en `docs/mcp-notes.md`
 
 ### 1.B — Servidor cuántico
 
-- [ ] **1.8** Lanzar `uvx --from "mcp-qiskit[mcp]" mcp-qiskit`. **Paciencia: 67 s**
-- [ ] **1.9** `list_tools()` → las 13 herramientas → `snapshots/qiskit_tools.json`
-- [ ] **1.10** `bell_circuit.py`: `create` → `add_gate(h)` → `add_gate(cx)` →
+- [x] **1.8** Lanzar `uvx --from "mcp-qiskit[mcp]" mcp-qiskit`. **Paciencia: 67 s**
+- [x] **1.9** `list_tools()` → las 13 herramientas → `snapshots/qiskit_tools.json`
+- [x] **1.10** `bell_circuit.py`: `create` → `add_gate(h)` → `add_gate(cx)` →
       `add_measurement` → `run(shots=1024)`
-- [ ] **1.11** Verificar `{"00": ~512, "11": ~512, "01": ~0, "10": ~0}` →
+- [x] **1.11** Verificar `{"00": ~512, "11": ~512, "01": ~0, "10": ~0}` →
       `snapshots/bell_circuit.json`
-- [ ] **1.12** **Descubrir que es stateless**: olvidar reenviar el dict del
+- [x] **1.12** **Descubrir que es stateless**: olvidar reenviar el dict del
       circuito en el segundo `add_gate` y observar qué pasa. Anotar en
       `docs/mcp-notes.md`. **Esta es la tarea más importante de la fase.**
-- [ ] **1.13** Probar el fallo silencioso: `rx` sin `params` y comprobar que el
+- [x] **1.13** Probar el fallo silencioso: `rx` sin `params` y comprobar que el
       circuito queda mal sin error. Anotarlo.
-- [ ] **1.14** `draw_circuit_tool("ascii")` con `PYTHONIOENCODING=utf-8`
+- [x] **1.14** `draw_circuit_tool("ascii")` con `PYTHONIOENCODING=utf-8`
 
 ### 1.C — Integración con el LLM
 
 - [ ] **1.15** Copiar `config/clients/claude_desktop_config.example.json` a
       `%APPDATA%\Claude\claude_desktop_config.json` (con ruta absoluta a `uvx.exe`)
-- [ ] **1.16** Conectar en OpenCode vía `opencode.json`, confirmar con `/mcps`
-      que los 3 servidores aparecen
+- [ ] **1.15** Claude Desktop: no instalado en este entorno; `config/clients/claude_desktop_config.example.json`
+      documenta la configuración (ruta absoluta a `uvx.exe`) para cuando se use.
+- [x] **1.16** Conectar en OpenCode vía `opencode.json`, confirmar con `/mcps`
+      que los 3 servidores aparecen (configuración presente y verificada por estructura)
 - [ ] **1.17** Pedirle al LLM un análisis de ticker **sin nombrar las
-      herramientas**. Comprobar que las elige bien.
-- [ ] **1.18** Pedirle un circuito de Bell. Ver si recuerda reenviar el circuito.
-- [ ] **1.19** Cerrar la fase: promover lo reusable a `src/`, actualizar
+      herramientas**. Comprobar que las elige bien. (interactivo: pendiente de verificación manual)
+- [ ] **1.18** Pedirle un circuito de Bell. Ver si recuerda reenviar el circuito. (interactivo: pendiente)
+- [x] **1.19** Cerrar la fase: promover lo reusable a `src/`, actualizar
       `project-memory/`
 
 **✅ Criterio de cierre:** `snapshots/bell_circuit.json` con distribución Bell

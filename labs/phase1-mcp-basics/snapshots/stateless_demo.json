@@ -1,0 +1,44 @@
+{
+  "circuit_after_h_keys": [
+    "num_qubits",
+    "num_clbits",
+    "operations",
+    "name"
+  ],
+  "circuit_forgotten_keys": [
+    "num_qubits",
+    "num_clbits",
+    "operations",
+    "name"
+  ],
+  "circuit_after_h": {
+    "num_qubits": 2,
+    "num_clbits": 2,
+    "operations": [
+      {
+        "name": "h",
+        "qubits": [
+          0
+        ],
+        "params": []
+      }
+    ],
+    "name": "circuit"
+  },
+  "circuit_forgotten": {
+    "num_qubits": 8,
+    "num_clbits": 8,
+    "operations": [
+      {
+        "name": "cx",
+        "qubits": [
+          0,
+          1
+        ],
+        "params": []
+      }
+    ],
+    "name": "circuit"
+  },
+  "conclusion": "El segundo add_gate sin reenviar el dict NO modifica c1: el servidor es stateless. El circuito devuelto es uno nuevo (8 qubits por defecto) con solo cx, sin la H."
+}

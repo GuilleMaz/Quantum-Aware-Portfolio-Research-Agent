@@ -1,0 +1,651 @@
+{
+  "server": "qiskit",
+  "protocol_version": "2025-11-25",
+  "capabilities": {
+    "experimental": null,
+    "logging": {},
+    "prompts": {
+      "list_changed": true
+    },
+    "resources": {
+      "subscribe": false,
+      "list_changed": true
+    },
+    "tools": {
+      "list_changed": true
+    },
+    "completions": null,
+    "extensions": null,
+    "tasks": null
+  },
+  "server_info": {
+    "name": "mcp-qiskit",
+    "title": null,
+    "version": "4.1.1",
+    "description": null,
+    "website_url": null,
+    "icons": null
+  },
+  "count": 13,
+  "tools": [
+    {
+      "name": "create_quantum_circuit_tool",
+      "title": "Create Quantum Circuit Tool",
+      "description": "Create an empty quantum circuit.",
+      "input_schema": {
+        "properties": {
+          "num_qubits": {
+            "type": "integer",
+            "description": "Number of quantum bits in the circuit."
+          },
+          "num_classical_bits": {
+            "type": "integer",
+            "description": "Number of classical bits for measurements."
+          }
+        },
+        "required": [
+          "num_qubits",
+          "num_classical_bits"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "execution": null,
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": {
+        "fastmcp": {
+          "tags": []
+        }
+      }
+    },
+    {
+      "name": "add_gate_tool",
+      "title": "Add Gate Tool",
+      "description": "Add a quantum gate to a circuit.\n\nThis tool maintains circuit state between calls. Pass the circuit returned by\nprevious calls to append new gates. If no circuit is provided, a new 8-qubit\ncircuit with 8 classical bits is created automatically.",
+      "input_schema": {
+        "properties": {
+          "circuit": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Dictionary representation of the quantum circuit. If None, creates\na new circuit with 8 qubits and 8 classical bits."
+          },
+          "gate_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Name of the gate to add (e.g., 'h', 'x', 'cx', 'rz', 'u')."
+          },
+          "qubits": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "List of qubit indices to apply the gate to. Can be a single qubit\n(e.g., [0]) or multiple qubits (e.g., [0, 1, 2, 3]). When multiple qubits\nare specified for a single-qubit gate, the gate is applied to each qubit."
+          },
+          "params": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional list of parameters for parameterized gates."
+          }
+        },
+        "type": "object",
+        "additionalProperties": false
+      },
+      "execution": null,
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": {
+        "fastmcp": {
+          "tags": []
+        }
+      }
+    },
+    {
+      "name": "add_measurement_tool",
+      "title": "Add Measurement Tool",
+      "description": "Add measurement operations to a circuit.\n\nThis tool maintains circuit state between calls. Pass the circuit returned by\nprevious calls to append measurements. If no circuit is provided, a new 8-qubit\ncircuit with 8 classical bits is created automatically.",
+      "input_schema": {
+        "properties": {
+          "circuit": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Dictionary representation of the quantum circuit. If None, creates\na new circuit with 8 qubits and 8 classical bits."
+          },
+          "qubits": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "List of qubit indices to measure."
+          },
+          "clbits": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "List of classical bit indices to store results."
+          }
+        },
+        "type": "object",
+        "additionalProperties": false
+      },
+      "execution": null,
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": {
+        "fastmcp": {
+          "tags": []
+        }
+      }
+    },
+    {
+      "name": "get_circuit_depth_tool",
+      "title": "Get Circuit Depth Tool",
+      "description": "Get the depth of a quantum circuit.",
+      "input_schema": {
+        "properties": {
+          "circuit": {
+            "additionalProperties": true,
+            "type": "object",
+            "description": "Dictionary representation of the quantum circuit."
+          }
+        },
+        "required": [
+          "circuit"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "type": "object",
+        "x-fastmcp-wrap-result": true
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": {
+        "fastmcp": {
+          "tags": []
+        }
+      }
+    },
+    {
+      "name": "list_available_gates_tool",
+      "title": "List Available Gates Tool",
+      "description": "List all available quantum gates in Qiskit.",
+      "input_schema": {
+        "properties": {},
+        "type": "object",
+        "additionalProperties": false
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "type": "object",
+        "x-fastmcp-wrap-result": true
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": {
+        "fastmcp": {
+          "tags": []
+        }
+      }
+    },
+    {
+      "name": "get_gate_definition_tool",
+      "title": "Get Gate Definition Tool",
+      "description": "Get the definition of a quantum gate.",
+      "input_schema": {
+        "properties": {
+          "gate_name": {
+            "type": "string",
+            "description": "Name of the quantum gate."
+          }
+        },
+        "required": [
+          "gate_name"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "execution": null,
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": {
+        "fastmcp": {
+          "tags": []
+        }
+      }
+    },
+    {
+      "name": "draw_circuit_tool",
+      "title": "Draw Circuit Tool",
+      "description": "Draw a quantum circuit.",
+      "input_schema": {
+        "properties": {
+          "circuit": {
+            "additionalProperties": true,
+            "type": "object",
+            "description": "Dictionary representation of the quantum circuit."
+          },
+          "output_format": {
+            "default": "ascii",
+            "type": "string",
+            "description": "Format for output ('ascii', 'text', 'mpl', 'latex')."
+          }
+        },
+        "required": [
+          "circuit"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "type": "object",
+        "x-fastmcp-wrap-result": true
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": {
+        "fastmcp": {
+          "tags": []
+        }
+      }
+    },
+    {
+      "name": "list_backends_tool",
+      "title": "List Backends Tool",
+      "description": "List available quantum backends.",
+      "input_schema": {
+        "properties": {
+          "filters": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional dictionary of filters (e.g., {'status': 'ONLINE'})."
+          }
+        },
+        "type": "object",
+        "additionalProperties": false
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "type": "object",
+        "x-fastmcp-wrap-result": true
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": {
+        "fastmcp": {
+          "tags": []
+        }
+      }
+    },
+    {
+      "name": "get_backend_status_tool",
+      "title": "Get Backend Status Tool",
+      "description": "Get the status of a specific quantum backend.",
+      "input_schema": {
+        "properties": {
+          "backend_name": {
+            "type": "string",
+            "description": "Name of the backend."
+          }
+        },
+        "required": [
+          "backend_name"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "execution": null,
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": {
+        "fastmcp": {
+          "tags": []
+        }
+      }
+    },
+    {
+      "name": "get_backend_configuration_tool",
+      "title": "Get Backend Configuration Tool",
+      "description": "Get detailed configuration of a quantum backend.",
+      "input_schema": {
+        "properties": {
+          "backend_name": {
+            "type": "string",
+            "description": "Name of the backend."
+          }
+        },
+        "required": [
+          "backend_name"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "execution": null,
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": {
+        "fastmcp": {
+          "tags": []
+        }
+      }
+    },
+    {
+      "name": "run_circuit_tool",
+      "title": "Run Circuit Tool",
+      "description": "Execute a quantum circuit on a backend.",
+      "input_schema": {
+        "properties": {
+          "circuit": {
+            "additionalProperties": true,
+            "type": "object",
+            "description": "Dictionary representation of the quantum circuit."
+          },
+          "backend_name": {
+            "default": "aer_simulator",
+            "type": "string",
+            "description": "Name of the backend to execute on."
+          },
+          "shots": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": 1024,
+            "description": "Number of measurement shots."
+          },
+          "seed": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional seed for reproducibility."
+          }
+        },
+        "required": [
+          "circuit"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "execution": null,
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": {
+        "fastmcp": {
+          "tags": []
+        }
+      }
+    },
+    {
+      "name": "run_circuits_tool",
+      "title": "Run Circuits Tool",
+      "description": "Execute multiple quantum circuits on a backend.",
+      "input_schema": {
+        "properties": {
+          "circuits": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "description": "List of dictionary representations of quantum circuits."
+          },
+          "backend_name": {
+            "default": "aer_simulator",
+            "type": "string",
+            "description": "Name of the backend to execute on."
+          },
+          "shots": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": 1024,
+            "description": "Number of measurement shots."
+          },
+          "seed": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional seed for reproducibility."
+          }
+        },
+        "required": [
+          "circuits"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "type": "object",
+        "x-fastmcp-wrap-result": true
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": {
+        "fastmcp": {
+          "tags": []
+        }
+      }
+    },
+    {
+      "name": "transpile_circuit_tool",
+      "title": "Transpile Circuit Tool",
+      "description": "Transpile a quantum circuit.",
+      "input_schema": {
+        "properties": {
+          "circuit": {
+            "additionalProperties": true,
+            "type": "object",
+            "description": "Dictionary representation of the quantum circuit."
+          },
+          "optimization_level": {
+            "default": 1,
+            "type": "integer",
+            "description": "Optimization level (0-3)."
+          },
+          "basis_gates": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional list of basis gates to target."
+          }
+        },
+        "required": [
+          "circuit"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "execution": null,
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": {
+        "fastmcp": {
+          "tags": []
+        }
+      }
+    }
+  ]
+}

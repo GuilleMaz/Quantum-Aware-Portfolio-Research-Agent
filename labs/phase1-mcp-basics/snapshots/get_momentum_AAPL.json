@@ -1,0 +1,23 @@
+{
+  "is_error": false,
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"price_momentum_30d\": 0.0734, \"price_momentum_90d\": 0.1789, \"volatility\": 0.1981, \"relative_strength\": 3.114, \"max_drawdown\": -0.1271}"
+    }
+  ],
+  "structured_content": {
+    "result": "{\"price_momentum_30d\": 0.0734, \"price_momentum_90d\": 0.1789, \"volatility\": 0.1981, \"relative_strength\": 3.114, \"max_drawdown\": -0.1271}"
+  },
+  "parsed": {
+    "price_momentum_30d": 0.0734,
+    "price_momentum_90d": 0.1789,
+    "volatility": 0.1981,
+    "relative_strength": 3.114,
+    "max_drawdown": -0.1271
+  },
+  "tool": "get_momentum",
+  "arguments": {
+    "symbol": "AAPL"
+  }
+}

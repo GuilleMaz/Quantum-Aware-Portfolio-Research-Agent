@@ -8,13 +8,16 @@
 
 ## Siguiente acción recomendada
 
-**Leer `theory/index.md` y empezar la Fase 1.1.**
+**Fase 1 cerrada. Empezar Fase 2.1.**
+
+Leer antes: `theory/python-sdk.md`, `theory/mcp.md`.
 
 ```powershell
-uv sync
+mkdir labs\phase2-own-server
 ```
 
-Después: `labs/phase1-mcp-basics/README.md` tiene la lista completa.
+Después: `labs/phase2-own-server/README.md` tiene la lista completa. Los
+servidores externos ya no son necesarios para la Fase 2 (se escribe uno propio).
 
 ---
 

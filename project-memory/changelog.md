@@ -5,6 +5,48 @@
 
 ---
 
+## 2026-10-18 — Fase 1: fundamentos de MCP (cierre)
+
+### Cambios
+
+- `labs/phase1-mcp-basics/`: experimentos del ciclo `list_tools()` →
+  `call_tool()` contra los dos servidores externos.
+  - `common.py`, `list_tools.py`, `call_tool.py`, `handshake.py`,
+    `bell_circuit.py`, `stateless_demo.py`, `silent_rx_demo.py`,
+    `draw_circuit.py`, `probe_financial.py`.
+- `snapshots/`: `financial_tools.json` (42 tools), `qiskit_tools.json`
+  (13 tools), `get_price_AAPL.json`, `get_fundamentals_AAPL.json`,
+  `get_momentum_AAPL.json`, `bell_circuit.json`, `stateless_demo.json`,
+  `silent_rx_demo.json`, `bell_circuit_ascii.txt`.
+- `docs/mcp-notes.md`: evidencia empírica de Fase 1 (initialize crudo,
+  doble encoding con literal, stateless con síntoma literal, fallo silencioso
+  de `rx` sin `params`, distribución de Bell).
+
+### Verificación
+
+- `uv sync`: OK, venv Python 3.12.
+- `list_tools.py financial`: 42 herramientas.
+- `call_tool.py get_price/get_fundamentals/get_momentum AAPL`: `is_error=False`,
+  doble encoding parseado en dos pasos.
+- `bell_circuit.py`: `{"00": 519, "11": 505}` con 1024 shots (Bell ±5%).
+- `stateless_demo.py`: olvidar reenviar el dict crea un circuito nuevo de
+  8 qubits con solo `cx` (stateless confirmado).
+- `silent_rx_demo.py`: `rx` sin `params` → `params: [0.5]` sin error;
+  distribuciones `{"0":961,"1":63}` vs `{"0":769,"1":255}`.
+- `draw_circuit.py`: ASCII renderizado con `PYTHONIOENCODING=utf-8`.
+
+### Tareas interactivas pendientes
+
+- 1.15 (Claude Desktop no instalado en este entorno; config de ejemplo lista).
+- 1.17/1.18 (verificación manual con el LLM en OpenCode: análisis de ticker
+  sin nombrar herramientas y circuito de Bell).
+
+### Motivo
+
+Cerrar la Fase 1 con evidencia reproducible del ciclo MCP y de las dos
+trampas centrales (stateless y fallo silencioso), que justifican el reducer
+de la Fase 3 y el uso de Qiskit directo (AD-0008).
+
 ## 2026-10-18 — Verificación Fase 0: entorno, tests y push
 
 ### Cambios

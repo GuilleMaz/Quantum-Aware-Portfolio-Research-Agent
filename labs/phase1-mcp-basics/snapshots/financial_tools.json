@@ -1,0 +1,1578 @@
+{
+  "server": "financial",
+  "protocol_version": "2025-11-25",
+  "capabilities": {
+    "experimental": {},
+    "logging": null,
+    "prompts": {
+      "list_changed": false
+    },
+    "resources": {
+      "subscribe": false,
+      "list_changed": false
+    },
+    "tools": {
+      "list_changed": false
+    },
+    "completions": null,
+    "extensions": null,
+    "tasks": null
+  },
+  "server_info": {
+    "name": "financial-mcp",
+    "title": null,
+    "version": "1.30.0",
+    "description": null,
+    "website_url": null,
+    "icons": null
+  },
+  "count": 42,
+  "tools": [
+    {
+      "name": "analyze_ticker",
+      "title": null,
+      "description": "Full analysis of a ticker: fundamentals, momentum, and composite score.",
+      "input_schema": {
+        "properties": {
+          "symbol": {
+            "title": "Symbol",
+            "type": "string"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "title": "analyze_tickerArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "analyze_tickerOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "scan_universe",
+      "title": null,
+      "description": "Score a list of tickers and return them ranked by composite score.\n\nArgs:\n    symbols: Comma-separated list of ticker symbols (e.g. \"AAPL,MSFT,GOOGL\").\n",
+      "input_schema": {
+        "properties": {
+          "symbols": {
+            "title": "Symbols",
+            "type": "string"
+          }
+        },
+        "required": [
+          "symbols"
+        ],
+        "title": "scan_universeArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "scan_universeOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_fundamentals",
+      "title": null,
+      "description": "Get fundamental metrics for a ticker: PE, EV/EBITDA, P/B, dividend yield, market cap, sector.",
+      "input_schema": {
+        "properties": {
+          "symbol": {
+            "title": "Symbol",
+            "type": "string"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "title": "get_fundamentalsArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_fundamentalsOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_momentum",
+      "title": null,
+      "description": "Get momentum signals: 30d/90d price momentum, volatility, relative strength, max drawdown.",
+      "input_schema": {
+        "properties": {
+          "symbol": {
+            "title": "Symbol",
+            "type": "string"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "title": "get_momentumArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_momentumOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_price",
+      "title": null,
+      "description": "Get the current price for a ticker symbol.",
+      "input_schema": {
+        "properties": {
+          "symbol": {
+            "title": "Symbol",
+            "type": "string"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "title": "get_priceArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_priceOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "score_ticker",
+      "title": null,
+      "description": "Score a single ticker (0-100) with component breakdown.\n\nArgs:\n    symbol: Ticker symbol.\n    sentiment: Optional JSON dict with sentiment data (e.g. '{\"score\": 75}').\n",
+      "input_schema": {
+        "properties": {
+          "symbol": {
+            "title": "Symbol",
+            "type": "string"
+          },
+          "sentiment": {
+            "default": "",
+            "title": "Sentiment",
+            "type": "string"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "title": "score_tickerArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "score_tickerOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_price_history",
+      "title": null,
+      "description": "Get OHLCV price bars for a ticker.\n\nArgs:\n    symbol: Ticker symbol.\n    period: One of 1d, 5d, 1mo, 3mo, 6mo, 1y, 2y, 5y, max.\n    interval: One of 1m, 5m, 15m, 30m, 1h, 1d, 1wk, 1mo (intraday intervals only work for short periods).\n",
+      "input_schema": {
+        "properties": {
+          "symbol": {
+            "title": "Symbol",
+            "type": "string"
+          },
+          "period": {
+            "default": "3mo",
+            "title": "Period",
+            "type": "string"
+          },
+          "interval": {
+            "default": "1d",
+            "title": "Interval",
+            "type": "string"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "title": "get_price_historyArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_price_historyOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_technical_indicators",
+      "title": null,
+      "description": "Get technical indicators for a ticker: RSI, MACD, SMAs (20/50/200), Bollinger Bands, ATR, 52-week levels, volume ratio — plus a plain-English summary of the signals.",
+      "input_schema": {
+        "properties": {
+          "symbol": {
+            "title": "Symbol",
+            "type": "string"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "title": "get_technical_indicatorsArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_technical_indicatorsOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_sector_performance",
+      "title": null,
+      "description": "Get performance of all 11 S&P sector ETFs vs SPY over 1d/5d/1mo/3mo, ranked, with leaders and laggards — a one-call view of sector rotation.",
+      "input_schema": {
+        "properties": {},
+        "title": "get_sector_performanceArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_sector_performanceOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_ticker_news",
+      "title": null,
+      "description": "Get the latest news headlines for a ticker with publisher, date, and summary.\n\nArgs:\n    symbol: Ticker symbol.\n    count: Max headlines to return.\n",
+      "input_schema": {
+        "properties": {
+          "symbol": {
+            "title": "Symbol",
+            "type": "string"
+          },
+          "count": {
+            "default": 10,
+            "title": "Count",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "title": "get_ticker_newsArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_ticker_newsOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_earnings_info",
+      "title": null,
+      "description": "Get earnings data for a ticker: next earnings date, EPS estimate, and recent quarters' estimate vs actual with surprise %. Critical before holding through an earnings event.",
+      "input_schema": {
+        "properties": {
+          "symbol": {
+            "title": "Symbol",
+            "type": "string"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "title": "get_earnings_infoArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_earnings_infoOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_analyst_ratings",
+      "title": null,
+      "description": "Get analyst price targets (mean/high/low), upside vs current price, consensus recommendation, and the monthly recommendation trend.",
+      "input_schema": {
+        "properties": {
+          "symbol": {
+            "title": "Symbol",
+            "type": "string"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "title": "get_analyst_ratingsArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_analyst_ratingsOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_options_snapshot",
+      "title": null,
+      "description": "Get an options-market snapshot for a ticker: put/call volume and open-interest ratios, ATM implied volatility, and max pain for one expiry.\n\nArgs:\n    symbol: Ticker symbol.\n    expiry: Optional expiry date (YYYY-MM-DD). Defaults to the nearest expiry.\n",
+      "input_schema": {
+        "properties": {
+          "symbol": {
+            "title": "Symbol",
+            "type": "string"
+          },
+          "expiry": {
+            "default": "",
+            "title": "Expiry",
+            "type": "string"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "title": "get_options_snapshotArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_options_snapshotOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_sec_filings",
+      "title": null,
+      "description": "Get recent SEC filings for a company.\n\nArgs:\n    symbol: Ticker symbol.\n    filing_type: Filing type (10-K, 10-Q, 8-K, etc).\n    count: Number of filings to return.\n",
+      "input_schema": {
+        "properties": {
+          "symbol": {
+            "title": "Symbol",
+            "type": "string"
+          },
+          "filing_type": {
+            "default": "10-K",
+            "title": "Filing Type",
+            "type": "string"
+          },
+          "count": {
+            "default": 5,
+            "title": "Count",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "title": "get_sec_filingsArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_sec_filingsOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_insider_trades",
+      "title": null,
+      "description": "Get recent insider trading filings (Forms 3/4/5) for a company.\n\nArgs:\n    symbol: Ticker symbol.\n    days: Look back this many days.\n",
+      "input_schema": {
+        "properties": {
+          "symbol": {
+            "title": "Symbol",
+            "type": "string"
+          },
+          "days": {
+            "default": 90,
+            "title": "Days",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "title": "get_insider_tradesArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_insider_tradesOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "search_sec_filings",
+      "title": null,
+      "description": "Search SEC EDGAR full-text for filings matching a query.\n\nArgs:\n    query: Search text (company name, keyword, ticker).\n    filing_type: Optional filter (10-K, 10-Q, 8-K, etc). Empty for all types.\n    count: Max results.\n",
+      "input_schema": {
+        "properties": {
+          "query": {
+            "title": "Query",
+            "type": "string"
+          },
+          "filing_type": {
+            "default": "",
+            "title": "Filing Type",
+            "type": "string"
+          },
+          "count": {
+            "default": 10,
+            "title": "Count",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "title": "search_sec_filingsArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "search_sec_filingsOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_economic_indicator",
+      "title": null,
+      "description": "Get economic data from FRED (Federal Reserve). Common series: GDP, CPIAUCSL, UNRATE, FEDFUNDS, DFF, T10Y2Y, VIXCLS.\n\nArgs:\n    series_id: FRED series ID.\n    limit: Number of observations.\n",
+      "input_schema": {
+        "properties": {
+          "series_id": {
+            "title": "Series Id",
+            "type": "string"
+          },
+          "limit": {
+            "default": 100,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "series_id"
+        ],
+        "title": "get_economic_indicatorArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_economic_indicatorOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_yield_curve",
+      "title": null,
+      "description": "Get the current US Treasury yield curve with inversion detection.",
+      "input_schema": {
+        "properties": {},
+        "title": "get_yield_curveArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_yield_curveOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_economic_snapshot",
+      "title": null,
+      "description": "Get a snapshot of key economic indicators: GDP, CPI, unemployment, fed funds, VIX, credit spreads.",
+      "input_schema": {
+        "properties": {},
+        "title": "get_economic_snapshotArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_economic_snapshotOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "search_fred_series",
+      "title": null,
+      "description": "Search FRED for economic data series by keyword — use this to find the right series ID before calling get_economic_indicator.\n\nArgs:\n    query: Free-text search (e.g. 'consumer price index', 'mortgage rate').\n    limit: Max results.\n",
+      "input_schema": {
+        "properties": {
+          "query": {
+            "title": "Query",
+            "type": "string"
+          },
+          "limit": {
+            "default": 10,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "title": "search_fred_seriesArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "search_fred_seriesOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_futures_positioning",
+      "title": null,
+      "description": "Get CFTC Commitments of Traders data showing how commercials and speculators are positioned.\n\nArgs:\n    market: Market name (e.g. GOLD, CRUDE OIL, E-MINI S&P 500, BITCOIN, EURO FX, CORN).\n    limit: Number of weekly reports.\n",
+      "input_schema": {
+        "properties": {
+          "market": {
+            "title": "Market",
+            "type": "string"
+          },
+          "limit": {
+            "default": 10,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "market"
+        ],
+        "title": "get_futures_positioningArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_futures_positioningOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_smart_money_signal",
+      "title": null,
+      "description": "Get a bullish/bearish/neutral signal based on commercial hedger positioning (the 'smart money').\n\nArgs:\n    market: Market name (e.g. GOLD, CRUDE OIL, E-MINI S&P 500).\n",
+      "input_schema": {
+        "properties": {
+          "market": {
+            "title": "Market",
+            "type": "string"
+          }
+        },
+        "required": [
+          "market"
+        ],
+        "title": "get_smart_money_signalArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_smart_money_signalOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_search_trends",
+      "title": null,
+      "description": "Get Google Trends search interest over time. Useful as a leading indicator for market sentiment.\n\nArgs:\n    keywords: Comma-separated keywords (max 5). E.g. \"recession,stock market,buy stocks\".\n    timeframe: Time range: 'now 7-d', 'today 1-m', 'today 3-m', 'today 12-m', 'today 5-y'.\n",
+      "input_schema": {
+        "properties": {
+          "keywords": {
+            "title": "Keywords",
+            "type": "string"
+          },
+          "timeframe": {
+            "default": "today 3-m",
+            "title": "Timeframe",
+            "type": "string"
+          }
+        },
+        "required": [
+          "keywords"
+        ],
+        "title": "get_search_trendsArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_search_trendsOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_trending_searches",
+      "title": null,
+      "description": "Get currently trending Google searches for a country.",
+      "input_schema": {
+        "properties": {
+          "country": {
+            "default": "united_states",
+            "title": "Country",
+            "type": "string"
+          }
+        },
+        "title": "get_trending_searchesArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_trending_searchesOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_treasury_rates",
+      "title": null,
+      "description": "Get recent US Treasury average interest rates.",
+      "input_schema": {
+        "properties": {
+          "days": {
+            "default": 30,
+            "title": "Days",
+            "type": "integer"
+          }
+        },
+        "title": "get_treasury_ratesArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_treasury_ratesOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_treasury_yield_curve",
+      "title": null,
+      "description": "Get daily Treasury yield curve data (1mo through 30yr maturities).",
+      "input_schema": {
+        "properties": {
+          "days": {
+            "default": 5,
+            "title": "Days",
+            "type": "integer"
+          }
+        },
+        "title": "get_treasury_yield_curveArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_treasury_yield_curveOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_treasury_auctions",
+      "title": null,
+      "description": "Get recent Treasury auction results.\n\nArgs:\n    security_type: Optional filter (e.g. 'Bill', 'Note', 'Bond', 'TIPS'). Empty for all.\n    days: Look back period.\n",
+      "input_schema": {
+        "properties": {
+          "security_type": {
+            "default": "",
+            "title": "Security Type",
+            "type": "string"
+          },
+          "days": {
+            "default": 30,
+            "title": "Days",
+            "type": "integer"
+          }
+        },
+        "title": "get_treasury_auctionsArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_treasury_auctionsOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_market_brief",
+      "title": null,
+      "description": "One-call market situational awareness: regime (BULL/BEAR/...), VIX analysis, sector rotation (leaders/laggards), and the Treasury yield curve. Each section degrades independently if its data source is down — call this first to orient before deeper analysis.",
+      "input_schema": {
+        "properties": {},
+        "title": "get_market_briefArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_market_briefOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "detect_market_regime",
+      "title": null,
+      "description": "Classify current market regime: BULL, BEAR, SIDEWAYS, HIGH_VOLATILITY, or CRASH. Uses SPY and VIX signals.",
+      "input_schema": {
+        "properties": {},
+        "title": "detect_market_regimeArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "detect_market_regimeOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_regime_history",
+      "title": null,
+      "description": "Get monthly market regime classification for the last N months.\n\nArgs:\n    months: Number of months of history.\n",
+      "input_schema": {
+        "properties": {
+          "months": {
+            "default": 12,
+            "title": "Months",
+            "type": "integer"
+          }
+        },
+        "title": "get_regime_historyArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_regime_historyOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_vix_analysis",
+      "title": null,
+      "description": "Analyze VIX: current level, 1-year percentile, term structure, and fear signal.",
+      "input_schema": {
+        "properties": {},
+        "title": "get_vix_analysisArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_vix_analysisOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "scan_anomalies",
+      "title": null,
+      "description": "Scan for market anomalies: volume spikes, price gaps, 52-week extremes, volatility expansion, momentum divergence.\n\nArgs:\n    symbols: Comma-separated symbols. Empty uses 50 major tickers.\n    lookback_days: Analysis window.\n",
+      "input_schema": {
+        "properties": {
+          "symbols": {
+            "default": "",
+            "title": "Symbols",
+            "type": "string"
+          },
+          "lookback_days": {
+            "default": 30,
+            "title": "Lookback Days",
+            "type": "integer"
+          }
+        },
+        "title": "scan_anomaliesArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "scan_anomaliesOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "scan_volume_leaders",
+      "title": null,
+      "description": "Find stocks with unusual volume (today's volume vs 20-day average).\n\nArgs:\n    symbols: Comma-separated symbols. Empty uses 50 major tickers.\n    min_ratio: Minimum volume ratio to include (default 2x).\n",
+      "input_schema": {
+        "properties": {
+          "symbols": {
+            "default": "",
+            "title": "Symbols",
+            "type": "string"
+          },
+          "min_ratio": {
+            "default": 2.0,
+            "title": "Min Ratio",
+            "type": "number"
+          }
+        },
+        "title": "scan_volume_leadersArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "scan_volume_leadersOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "scan_gap_movers",
+      "title": null,
+      "description": "Find stocks that gapped significantly at market open.\n\nArgs:\n    symbols: Comma-separated symbols. Empty uses 50 major tickers.\n    min_gap_pct: Minimum gap percentage to include.\n",
+      "input_schema": {
+        "properties": {
+          "symbols": {
+            "default": "",
+            "title": "Symbols",
+            "type": "string"
+          },
+          "min_gap_pct": {
+            "default": 2.0,
+            "title": "Min Gap Pct",
+            "type": "number"
+          }
+        },
+        "title": "scan_gap_moversArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "scan_gap_moversOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "create_portfolio",
+      "title": null,
+      "description": "Create a new paper trading portfolio.\n\nArgs:\n    starting_capital: Initial cash amount (10000-1000000).\n    risk_profile: One of 'conservative', 'moderate', 'aggressive'.\n    investment_horizon: One of 'short', 'medium', 'long'.\n    name: Optional portfolio name.\n",
+      "input_schema": {
+        "properties": {
+          "starting_capital": {
+            "title": "Starting Capital",
+            "type": "number"
+          },
+          "risk_profile": {
+            "title": "Risk Profile",
+            "type": "string"
+          },
+          "investment_horizon": {
+            "title": "Investment Horizon",
+            "type": "string"
+          },
+          "name": {
+            "default": "Default",
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "starting_capital",
+          "risk_profile",
+          "investment_horizon"
+        ],
+        "title": "create_portfolioArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "create_portfolioOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "analyze_portfolio",
+      "title": null,
+      "description": "Portfolio summary with holdings, allocations, performance, and risk.",
+      "input_schema": {
+        "properties": {
+          "portfolio_id": {
+            "title": "Portfolio Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "portfolio_id"
+        ],
+        "title": "analyze_portfolioArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "analyze_portfolioOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_holdings",
+      "title": null,
+      "description": "List current holdings in a portfolio with values and metadata.",
+      "input_schema": {
+        "properties": {
+          "portfolio_id": {
+            "title": "Portfolio Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "portfolio_id"
+        ],
+        "title": "get_holdingsArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_holdingsOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "get_trades",
+      "title": null,
+      "description": "Get trade history for a portfolio, optionally filtered by status.\n\nArgs:\n    portfolio_id: The portfolio ID.\n    status: Optional filter: 'executed', 'proposed', 'rejected'. Empty for all.\n",
+      "input_schema": {
+        "properties": {
+          "portfolio_id": {
+            "title": "Portfolio Id",
+            "type": "string"
+          },
+          "status": {
+            "default": "",
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "portfolio_id"
+        ],
+        "title": "get_tradesArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "get_tradesOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "execute_buy",
+      "title": null,
+      "description": "Buy shares of a stock/ETF in a portfolio.\n\nArgs:\n    portfolio_id: The portfolio to trade in.\n    symbol: Ticker symbol to buy.\n    shares: Number of whole shares to buy.\n",
+      "input_schema": {
+        "properties": {
+          "portfolio_id": {
+            "title": "Portfolio Id",
+            "type": "string"
+          },
+          "symbol": {
+            "title": "Symbol",
+            "type": "string"
+          },
+          "shares": {
+            "title": "Shares",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "portfolio_id",
+          "symbol",
+          "shares"
+        ],
+        "title": "execute_buyArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "execute_buyOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "execute_sell",
+      "title": null,
+      "description": "Sell shares of a stock/ETF from a portfolio.\n\nArgs:\n    portfolio_id: The portfolio to trade in.\n    symbol: Ticker symbol to sell.\n    shares: Number of whole shares to sell.\n",
+      "input_schema": {
+        "properties": {
+          "portfolio_id": {
+            "title": "Portfolio Id",
+            "type": "string"
+          },
+          "symbol": {
+            "title": "Symbol",
+            "type": "string"
+          },
+          "shares": {
+            "title": "Shares",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "portfolio_id",
+          "symbol",
+          "shares"
+        ],
+        "title": "execute_sellArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "execute_sellOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "run_rebalance",
+      "title": null,
+      "description": "Run a full rebalance cycle: score universe, generate signals, execute trades.\n\nArgs:\n    portfolio_id: The portfolio to rebalance.\n    trigger: What triggered this rebalance (e.g. 'agent', 'manual', 'scheduled').\n    symbols: Comma-separated list of symbols to score. If empty, uses current holdings + large-caps.\n",
+      "input_schema": {
+        "properties": {
+          "portfolio_id": {
+            "title": "Portfolio Id",
+            "type": "string"
+          },
+          "trigger": {
+            "default": "agent",
+            "title": "Trigger",
+            "type": "string"
+          },
+          "symbols": {
+            "default": "",
+            "title": "Symbols",
+            "type": "string"
+          }
+        },
+        "required": [
+          "portfolio_id"
+        ],
+        "title": "run_rebalanceArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "run_rebalanceOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    },
+    {
+      "name": "check_risk",
+      "title": null,
+      "description": "Assess portfolio risk: stress score, scenario drawdowns, sector/geo allocation.",
+      "input_schema": {
+        "properties": {
+          "portfolio_id": {
+            "title": "Portfolio Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "portfolio_id"
+        ],
+        "title": "check_riskArguments",
+        "type": "object"
+      },
+      "execution": null,
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "check_riskOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": null,
+      "meta": null
+    }
+  ]
+}

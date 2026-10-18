@@ -486,21 +486,118 @@ todavía no está.
 
 ### Fase 1
 
-- [ ] **Capacidades reales por servidor** — el bloque `capabilities` que devuelve
-      `initialize` en cada uno de los tres. Comparar: ¿anuncian más de lo que
-      cumplen?
-- [ ] **Literales de `initialize`** — copiar la respuesta cruda de los tres.
-      Sirve de referencia al montar el cliente de la Fase 3.
+- [x] **Capacidades reales por servidor** — `financial-mcp` anuncia
+      `tools`/`resources`/`prompts` con `listChanged: false`; `mcp-qiskit`
+      anuncia `tools`/`resources`/`prompts` con `listChanged: true` y
+      `logging`. Ver literales abajo.
+- [x] **Literales de `initialize`** — copiados abajo para el financiero;
+      el de qiskit está en `snapshots/qiskit_tools.json` (cabecera).
 - [ ] **Notificaciones** — `notifications/tools/list_changed`. ¿Se pueden
-      activar? ¿Tiene sentido aquí?
+      activar? ¿Tiene sentido aquí? (no medido)
 - [ ] **Ciclo de vida del subproceso** — quién cierra stdin, qué pasa si el
       servidor muere, qué queda zombi en Windows. Solo medido.
-- [ ] **El doble encoding, con literales** — la salida real de `get_price`, no
-      una descripción de ella.
-- [ ] **`mcp-qiskit` stateless, con el síntoma literal** — qué devuelve
-      exactamente el `add_gate` sin circuito reenviado.
+- [x] **El doble encoding, con literales** — la salida real de `get_price`,
+      abajo.
+- [x] **`mcp-qiskit` stateless, con el síntoma literal** — abajo.
 - [ ] **Recursos y prompts** — se anuncian como capacidades. ¿Los usan estos
-      servidores? ¿Están vacíos?
+      servidores? ¿Están vacíos? (no medido en esta fase)
+
+---
+
+## Evidencia Fase 1 (2026-10-18)
+
+### financial-mcp — `initialize` (crudo)
+
+```json
+{
+  "protocolVersion": "2025-11-25",
+  "capabilities": {
+    "experimental": {},
+    "prompts": {"listChanged": false},
+    "resources": {"subscribe": false, "listChanged": false},
+    "tools": {"listChanged": false}
+  },
+  "serverInfo": {"name": "financial-mcp", "version": "1.30.0"}
+}
+```
+
+Comando: `uvx --from financial-mcp-server --with "mcp<2" financial-mcp`.
+Capturado con `labs/phase1-mcp-basics/handshake.py` (JSON-RPC a mano).
+
+### financial-mcp — doble encoding (tarea 1.7)
+
+`get_price("AAPL")` devuelve:
+
+```json
+// structured_content (capa externa)
+{"result": "{\"symbol\": \"AAPL\", \"price\": 343.4599914550781}"}
+```
+
+Es decir: un dict cuyo único valor es una **string que contiene JSON**.
+Parseo obligatorio en dos pasos:
+
+```python
+outer = result.structured_content          # dict
+inner = json.loads(outer["result"])        # dict real: {"symbol": "AAPL", "price": ...}
+```
+
+Omitir el segundo `json.loads` deja `inner` como `str` y provoca
+`TypeError: string indices must be integers`. El mismo patrón se repite en
+`get_fundamentals` y `get_momentum` (este último trae `volatility` en la
+misma llamada, como anuncia su descripción).
+
+Snapshot completo: `labs/phase1-mcp-basics/snapshots/get_price_AAPL.json`.
+
+### mcp-qiskit — stateless (tarea 1.12, la más importante)
+
+`create_quantum_circuit_tool(2, 2)` → circuito con `operations: []`.
+`add_gate_tool(circuit=<ese>, gate_name="h", qubits=[0])` → circuito con
+`operations: [{"name": "h", ...}]`.
+
+Si en el **segundo** `add_gate` **no reenvías** el dict (se pasa `circuit=None`),
+el servidor no modifica el anterior: crea un circuito nuevo de 8 qubits/8 clbits
+y le añade solo `cx`:
+
+```json
+// circuito "olvidado"
+{"num_qubits": 8, "num_clbits": 8,
+ "operations": [{"name": "cx", "qubits": [0, 1], "params": []}]}
+```
+
+Conclusión empírica: **el servidor es stateless**, contra lo que dice su README.
+El dict del circuito es el estado y el cliente debe conservarlo y reenviarlo en
+cada llamada. Esa necesidad es la que justificará el reducer
+`Annotated[dict, merge_circuit]` en la Fase 3.
+
+Snapshot: `labs/phase1-mcp-basics/snapshots/stateless_demo.json`.
+
+### mcp-qiskit — fallo silencioso de `rx` sin `params` (tarea 1.13)
+
+`add_gate_tool(gate_name="rx", qubits=[0])` (sin `params`) **no lanza error**.
+El circuito resultante lleva `rx` con `params: [0.5]` por defecto:
+
+```json
+{"operations": [{"name": "rx", "qubits": [0], "params": [0.5]}]}
+```
+
+Con `rx(params=[1.0])` la distribución cambia (seed=7, 1024 shots):
+`rx` sin params → `{"0": 961, "1": 63}`; `rx(1.0)` → `{"0": 769, "1": 255}`.
+El agente cree que funcionó en ambos casos. Es el fallo más peligroso del
+proyecto: un guardarrail contra gates paramétricos sin `params` es deuda
+técnica registrada en `next-steps.md`.
+
+Snapshot: `labs/phase1-mcp-basics/snapshots/silent_rx_demo.json`.
+
+### mcp-qiskit — circuito de Bell (criterio de cierre)
+
+`create` → `h(0)` → `cx(0,1)` → `measure(0,1)` → `run(shots=1024)`:
+
+```json
+{"counts": {"00": 519, "11": 505}, "shots": 1024}
+```
+
+Distribución de Bell correcta (00 y 11 ~50% cada uno, 01 y 10 ~0), tolerancia
+±5%. Snapshot: `labs/phase1-mcp-basics/snapshots/bell_circuit.json`.
 
 ### Fase 2
 

@@ -1,0 +1,25 @@
+{
+  "is_error": false,
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"pe_ratio\": 39.38761, \"ev_to_ebitda\": 29.974, \"price_to_book\": 46.66576, \"dividend_yield\": 0.31, \"market_cap\": 5012516765696, \"sector\": \"Technology\", \"industry\": \"Consumer Electronics\"}"
+    }
+  ],
+  "structured_content": {
+    "result": "{\"pe_ratio\": 39.38761, \"ev_to_ebitda\": 29.974, \"price_to_book\": 46.66576, \"dividend_yield\": 0.31, \"market_cap\": 5012516765696, \"sector\": \"Technology\", \"industry\": \"Consumer Electronics\"}"
+  },
+  "parsed": {
+    "pe_ratio": 39.38761,
+    "ev_to_ebitda": 29.974,
+    "price_to_book": 46.66576,
+    "dividend_yield": 0.31,
+    "market_cap": 5012516765696,
+    "sector": "Technology",
+    "industry": "Consumer Electronics"
+  },
+  "tool": "get_fundamentals",
+  "arguments": {
+    "symbol": "AAPL"
+  }
+}
