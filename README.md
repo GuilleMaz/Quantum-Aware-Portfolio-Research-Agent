@@ -66,7 +66,7 @@ verificadas.
 ├── AGENTS.md              Contrato: cómo trabaja cualquier IA/agente aquí
 ├── PLAN.md                Roadmap de las 4 fases
 ├── TASKS.md               Checklist ejecutable (1 tarea = 1 commit)
-├── theory/                13 notebooks: curso teórico transversal
+├── theory/                12 notebooks: curso teórico transversal
 ├── labs/                  Experiments por fase (cuaderno desechable)
 ├── src/quantum_portfolio/ Paquete real (lo que se importa y se testea)
 ├── project-memory/        Memoria persistente del proyecto

@@ -24,7 +24,7 @@
 - [x] **0.9** `TASKS.md` — este fichero
 - [x] **0.10** `project-memory/` con los 5 archivos y contenido real
 - [x] **0.11** `docs/` (4 ficheros + `adr/`) y `config/` (`mcp_servers.json`)
-- [x] **0.12** `theory/` — 13 notebooks MyST
+- [x] **0.12** `theory/` — 12 notebooks MyST
 - [x] **0.13** `labs/` — 4 carpetas de fase con README que enlazan a `theory/`
 - [x] **0.14** `src/quantum_portfolio/` — estructura vacía
 - [x] **0.15** `.env.example`
@@ -201,5 +201,5 @@ persiste entre invocaciones con el mismo `thread_id`.
 *(Bitácora breve. El detalle va en `project-memory/changelog.md`.)*
 
 - **2026-10-18** — Fase 0 completa: repo inicializado, 4 archivos raíz,
-  `project-memory/`, `docs/`, `config/`, 13 notebooks en `theory/`,
+  `project-memory/`, `docs/`, `config/`, 12 notebooks en `theory/`,
   4 carpetas en `labs/`, estructura de `src/`, configs de 3 clientes. Push.
