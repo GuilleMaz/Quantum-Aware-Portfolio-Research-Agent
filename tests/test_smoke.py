@@ -17,7 +17,10 @@ def test_version_exists() -> None:
 
 
 def test_state_is_typed_dict() -> None:
-    assert PortfolioState.__annotations__["alta_volatilidad"] is bool
+    import typing
+
+    hints = typing.get_type_hints(PortfolioState, include_extras=True)
+    assert hints["alta_volatilidad"] is bool
 
 
 def test_mcp_server_spec_defaults() -> None:

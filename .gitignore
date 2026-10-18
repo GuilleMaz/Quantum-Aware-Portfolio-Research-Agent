@@ -67,12 +67,12 @@ coverage.xml
 # ---------------------------------------------------------------------------
 # DATOS Y SALIDAS DEL PROYECTO
 # ---------------------------------------------------------------------------
-# Cache local de precios y datos de mercado
-data/
+# Cache local de precios y datos de mercado (se versiona solo el marcador)
+data/*
 !data/.gitkeep
 
-# Informes y resultados generados
-outputs/
+# Informes y resultados generados (se versiona solo el marcador)
+outputs/*
 !outputs/.gitkeep
 
 # Artefactos de ejecución cuántica

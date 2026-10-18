@@ -1,0 +1,9 @@
+# Marcadores de posición
+
+Estas carpetas existen para que git las versione. Su contenido real está en
+`.gitignore`.
+
+- `data/` — caché de precios y datos de mercado descargados
+- `outputs/` — informes y resultados generados por el orquestador
+
+Ver `project-memory/architecture.md` para el árbol completo.

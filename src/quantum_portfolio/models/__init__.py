@@ -7,13 +7,15 @@ Regla de separacion (``AGENTS.md`` 3.2): estos modelos no deben contener
 llamadas a servidores MCP. Describen datos, no los obtienen.
 """
 
-from quantum_portfolio.models.asset import Asset, AssetMetrics, PriceBar
+from quantum_portfolio.models.asset import Asset, Fundamentals, MomentumMetrics, PriceBar, RiskLevel
 from quantum_portfolio.models.portfolio import Portfolio, PortfolioPosition
 
 __all__ = [
     "Asset",
-    "AssetMetrics",
+    "Fundamentals",
+    "MomentumMetrics",
     "Portfolio",
     "PortfolioPosition",
     "PriceBar",
+    "RiskLevel",
 ]

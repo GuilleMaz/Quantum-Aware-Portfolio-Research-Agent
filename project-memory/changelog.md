@@ -5,6 +5,42 @@
 
 ---
 
+## 2026-10-18 — Verificación Fase 0: entorno, tests y push
+
+### Cambios
+
+- `uv sync` con Python 3.12: venv funcional, `uv.lock` generado y versionado.
+- `pyproject.toml`: sección `[tool.mystnb]` con tabla inline rompía el parseo
+  TOML de uv → sustituida por `[tool.myst-nb]` con claves simples.
+- `src/quantum_portfolio/models/__init__.py`: importaba `AssetMetrics`, que no
+  existe (es `MomentumMetrics`). Corregido y reexportado con `RiskLevel` y
+  `Fundamentals`.
+- `tests/test_smoke.py`: el test de `TypedDict` usaba `__annotations__`, que
+  con `from __future__ import annotations` devuelve strings → cambiado a
+  `typing.get_type_hints()`.
+- `.gitignore`: `data/` y `outputs/` ignoraban el directorio entero y git no
+  veía los `.gitkeep` → cambiado a `data/*` + `!data/.gitkeep` (igual en
+  `outputs/`).
+
+### Verificación
+
+- `uv run pytest tests/`: **7 passed**.
+- `uv run ruff check src/ tests/`: limpio.
+- `uv run mypy src/` (strict): **sin issues en 11 ficheros**.
+- Los 5 JSON de `config/` + `opencode.json` parsean con `ConvertFrom-Json`.
+
+### Archivos
+
+- `pyproject.toml`, `.gitignore`, `src/.../models/__init__.py`,
+  `tests/test_smoke.py`, `uv.lock`, `data/.gitkeep`, `outputs/.gitkeep`
+
+### Motivo
+
+La Fase 0 no está cerrada hasta que el entorno se verifica ejecutando, no
+solo escribiendo ficheros (regla del proyecto: verificar, no asumir).
+
+---
+
 ## 2026-10-18 — Fase 0: estructura completa del repo
 
 ### Cambios

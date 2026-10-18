@@ -151,8 +151,6 @@ markers = [
 # ---------------------------------------------------------------------------
 # MYST-NB
 # ---------------------------------------------------------------------------
-[tool.mystnb]
+[tool.myst-nb]
 # Los notebooks se ejecutan en CI, no en cada save.
 execution_mode = "off"
-# Las salidas se commitean: renderizan en GitHub sin ejecutar nada.
-nb_render_image_options = { "embed_images": true }
