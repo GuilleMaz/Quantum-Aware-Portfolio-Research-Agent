@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "mcp_servers",
+  "description": "Fuente unica de verdad de los servidores MCP del proyecto. Tanto el cliente MCP (src/quantum_portfolio/mcp_clients/) como los ficheros config/clients/*.example.json se derivan de aqui. Comandos verificados ejecutando el 2026-10-18; la documentacion upstream de ambos paquetes externos esta desactualizada.",
+  "servers": {
+    "financial": {
+      "description": "Precios, fundamentales, momentum, volatilidad, VIX, macro, paper trading. 42 herramientas, datos reales via yfinance. Alpha, 1 mantenedor.",
+      "package": "financial-mcp-server",
+      "version_verified": "0.1.12",
+      "command": "uvx",
+      "args": ["--from", "financial-mcp-server", "--with", "mcp<2", "financial-mcp"],
+      "why_pin": "Declara mcp[cli]>=1.0.0 sin cota superior; uv instala mcp 2.x donde mcp.server.fastmcp ya no existe (FastMCP fue renombrado a MCPServer). Sin el pin no arranca: ModuleNotFoundError.",
+      "transport": "stdio",
+      "timeout_ms": 60000,
+      "env_optional": {
+        "FRED_API_KEY": "Desbloquea 4 herramientas macro (get_economic_indicator, search_fred_series, get_yield_curve, get_economic_snapshot). Gratis: https://fred.stlouisfed.org/docs/api/api_key.html",
+        "FINANCIAL_MCP_DB_PATH": "Ubicacion del SQLite de paper trading. Default: ~/.financial-mcp/financial_mcp.db",
+        "FINANCIAL_MCP_TRANSPORT": "Default: stdio"
+      },
+      "notes": [
+        "El historico se trunca siempre a los ultimos 250 bars (_MAX_BARS).",
+        "No existe ninguna herramienta que devuelva un universo de activos; el universo vive en nuestro config.",
+        "get_momentum trae volatilidad anualizada en la misma llamada: es la opcion optima para el Analista.",
+        "Todas las herramientas devuelven {\"result\": \"<json string>\"}: hay que parsear el doble encoding."
+      ]
+    },
+    "qiskit": {
+      "description": "Crear circuitos, aplicar compuertas y ejecutar en simuladores Aer. 13 herramientas. STATELESS: hay que reenviar el dict del circuito en cada llamada.",
+      "package": "mcp-qiskit",
+      "version_verified": "0.1.1",
+      "command": "uvx",
+      "args": ["--from", "mcp-qiskit[mcp]", "mcp-qiskit"],
+      "why_extra": "fastmcp esta solo en el extra [mcp], no en dependencies. Sin el extra no arranca: ModuleNotFoundError: fastmcp. El README upstream dice command: mcp-qiskit a secas, lo cual falla.",
+      "transport": "stdio",
+      "timeout_ms": 60000,
+      "why_timeout": "67 s el primer arranque (97 paquetes), ~9 s en caliente. El default de OpenCode (5000 ms) es insuficiente.",
+      "env_optional": {
+        "IBM_QUANTUM_TOKEN": "Inutil hoy: los backends de IBM no son alcanzables desde mcp-qiskit (bug verificado)."
+      },
+      "notes": [
+        "STATELESS: el circuito es un dict JSON que se deserializa, ejecuta y reserializa en cada llamada. El cliente debe conservarlo y reenviarlo.",
+        "Gates parametricos sin params reciben defaults silenciosos (rx->0.5): circuitos incorrectos sin error.",
+        "statevector se devuelve como strings, no como numeros JSON: inutil para aritmetica.",
+        "run_circuit degrada en silencio a un simulador generico si el backend no existe.",
+        "Sin simuladores ruidosos reales ni hardware IBM. Para trabajo serio usar Qiskit directo (AGENTS.md 8)."
+      ]
+    },
+    "memory": {
+      "description": "Memoria persistente entre sesiones. Para la Fase 4. Sustituye a mem0-mcp-server, cuyo repo de GitHub esta archivado.",
+      "package": "mcp-memory-service",
+      "command": "uvx",
+      "args": ["--from", "mcp-memory-service", "memory", "server"],
+      "transport": "stdio",
+      "timeout_ms": 60000,
+      "enabled_by_default": false,
+      "env_optional": {
+        "MCP_ALLOW_ANONYMOUS_ACCESS": "true para self-hosted sin auth"
+      }
+    }
+  }
+}
