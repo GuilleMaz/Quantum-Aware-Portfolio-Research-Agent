@@ -24,7 +24,7 @@ Quantum-Aware Portfolio Research Agent/
 │   ├── changelog.md
 │   └── next-steps.md
 │
-├── theory/                12 notebooks MyST (.md.ipynb), curso transversal
+├── theory/                12 notebooks MyST (.md), curso transversal
 │   └── figures/           Imágenes extraídas de los notebooks
 │
 ├── labs/                  Experiments por fase (cuaderno desechable)
@@ -69,12 +69,12 @@ Quantum-Aware Portfolio Research Agent/
 atados a una, cada README de fase enlaza a los que hay que leer antes.
 
 **Notebooks de física** (los que más interesan al usuario, que es físico):
-- `quantum-physics.md.ipynb` — statevector vs density matrix, estados producto
+- `quantum-physics.md` — statevector vs density matrix, estados producto
   vs entrelazados, traza parcial, valor esperado, canales CPTP, T1/T2, NISQ.
-- `portfolio-math.md.ipynb` — retorno, covarianza, Sharpe y sus sesgos,
+- `portfolio-math.md` — retorno, covarianza, Sharpe y sus sesgos,
   Markowitz con Lagrange, frontera eficiente, conditioning de Σ, **Markowitz →
   QUBO**.
-- `qaoa.md.ipynb` — Ising ↔ QUBO ↔ Hamiltoniano, $H_C$ diagonal, por qué
+- `qaoa.md` — Ising ↔ QUBO ↔ Hamiltoniano, $H_C$ diagonal, por qué
   $|+\rangle^{\otimes n}$ es el estado fundamental de $-H_M$, el ansatz,
   adiabaticidad, principio de variación, QAOA como distribución, barren
   plateaus, **§9 supervivencia con 5 argumentos y fuentes**.

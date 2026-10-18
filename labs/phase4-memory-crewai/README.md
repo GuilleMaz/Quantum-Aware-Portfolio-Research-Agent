@@ -4,8 +4,8 @@
 
 | Notebook | Qué te da |
 |---|---|
-| [`theory/agent-memory.md.ipynb`](../../theory/agent-memory.md.ipynb) | Memoria corta vs larga, embeddings, qué merece recordarse |
-| [`theory/langgraph.md.ipynb`](../../theory/langgraph.md.ipynb) | Repaso del modelo de grafo, para comparar con conocimiento |
+| [`theory/agent-memory.md`](../../theory/agent-memory.md) | Memoria corta vs larga, embeddings, qué merece recordarse |
+| [`theory/langgraph.md`](../../theory/langgraph.md) | Repaso del modelo de grafo, para comparar con conocimiento |
 
 > Depende de cerrar la Fase 3. El sistema ya orquesta dos agentes con estado;
 > aquí se le da memoria entre sesiones y se reimplementa con otro framework

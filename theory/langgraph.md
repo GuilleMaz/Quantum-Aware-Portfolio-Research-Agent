@@ -11,7 +11,7 @@ kernelspec:
 
 # LangGraph — grafos de estado
 
-> **Prerrequisitos:** `agents-concepts.md.ipynb`. **Objetivo:** estado con
+> **Prerrequisitos:** `agents-concepts.md`. **Objetivo:** estado con
 > `TypedDict`, nodos, aristas condicionales, reducers y checkpointer. Todo
 > verificado contra LangGraph 1.2.
 

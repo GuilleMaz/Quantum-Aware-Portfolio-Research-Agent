@@ -4,9 +4,9 @@
 
 | Notebook | Qué te da |
 |---|---|
-| [`theory/mcp.md.ipynb`](../../theory/mcp.md.ipynb) | El protocolo: JSON-RPC, transportes, el ciclo `list_tools()` → `call_tool()` |
-| [`theory/tool-discovery.md.ipynb`](../../theory/tool-discovery.md.ipynb) | Cómo el LLM decide qué herramienta usar |
-| [`theory/qiskit-basics.md.ipynb`](../../theory/qiskit-basics.md.ipynb) | Compuertas, estado de Bell, ejecución en Aer |
+| [`theory/mcp.md`](../../theory/mcp.md) | El protocolo: JSON-RPC, transportes, el ciclo `list_tools()` → `call_tool()` |
+| [`theory/tool-discovery.md`](../../theory/tool-discovery.md) | Cómo el LLM decide qué herramienta usar |
+| [`theory/qiskit-basics.md`](../../theory/qiskit-basics.md) | Compuertas, estado de Bell, ejecución en Aer |
 
 ---
 
@@ -49,7 +49,7 @@ Después ~9 s.
 
 ### 1.A — Servidor financiero
 - [ ] 1.1 `uv sync` y comprobar que el venv arranca
-- [ ] 1.2 Handshake `initialize` **a mano**, sin librería (ver `theory/mcp.md.ipynb`)
+- [ ] 1.2 Handshake `initialize` **a mano**, sin librería (ver `theory/mcp.md`)
 - [ ] 1.3 `list_tools.py` → `snapshots/financial_tools.json` (**42** tools, no 14)
 - [ ] 1.4 `get_price("AAPL")` → guardar salida real
 - [ ] 1.5 `get_fundamentals("AAPL")` → guardar salida real

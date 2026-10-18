@@ -161,14 +161,14 @@ pin. Sin él, **el proyecto no arranca**.
 
 ---
 
-## 2026-10-18 — AD-0003: MyST Markdown notebooks (`.md.ipynb`) sobre JSON
+## 2026-10-18 — AD-0003: MyST Markdown notebooks (`.md`) sobre JSON
 
 ### Problema
 Los notebooks son JSON con una línea gigante por celda → diffs ilegibles en git
 y GitHub no los renderiza bien.
 
 ### Decisión
-`theory/*.md.ipynb`: Markdown que se ejecuta con `myst-nb`, renderizado
+`theory/*.md`: Markdown que se ejecuta con `myst-nb`, renderizado
 nativamente en GitHub, diffs en texto legible línea a línea.
 
 ### Justificación

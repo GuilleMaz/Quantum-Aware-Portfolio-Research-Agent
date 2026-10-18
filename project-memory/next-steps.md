@@ -8,7 +8,7 @@
 
 ## Siguiente acción recomendada
 
-**Leer `theory/index.md.ipynb` y empezar la Fase 1.1.**
+**Leer `theory/index.md` y empezar la Fase 1.1.**
 
 ```powershell
 uv sync
@@ -21,9 +21,9 @@ Después: `labs/phase1-mcp-basics/README.md` tiene la lista completa.
 ## Alta prioridad — Fase 1
 
 ### Antes de codificar
-- [ ] Leer `theory/index.md.ipynb` (ruta de lectura + glosario)
-- [ ] Leer `theory/mcp.md.ipynb` (el protocolo)
-- [ ] Leer `theory/qiskit-basics.md.ipynb` (Qiskit y Aer)
+- [ ] Leer `theory/index.md` (ruta de lectura + glosario)
+- [ ] Leer `theory/mcp.md` (el protocolo)
+- [ ] Leer `theory/qiskit-basics.md` (Qiskit y Aer)
 - [ ] `uv sync` y confirmar que el venv arranca
 
 ### 1.A — Servidor financiero
@@ -130,7 +130,7 @@ Verificados empíricamente. Detalle en `AGENTS.md` §7 y `docs/mcp-notes.md`.
 - [ ] **Sintaxis del header de auth** de `https://mcp.mem0.ai/mcp` (alternativa
       cloud a `mcp-memory-service`).
 - [ ] **Estado de los papers de portfolio cuántico post-2025.** Las citas de
-      `theory/qaoa.md.ipynb` §9 están verificadas a 2026-10-18.
+      `theory/qaoa.md` §9 están verificadas a 2026-10-18.
 - [ ] **Si `mcp-memory-service` arranca en Windows.** Verificado el `--help`,
       no el handshake completo.
 

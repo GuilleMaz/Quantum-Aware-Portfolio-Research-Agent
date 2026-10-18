@@ -121,7 +121,7 @@ Ejemplos:
 
 ```
 feat(mcp): cliente stdio con ClientSessionGroup para dos servidores
-docs(theory): notebook qaoa.md.ipynb con Hamiltonian de coste y supervivencia
+docs(theory): notebook qaoa.md con Hamiltonian de coste y supervivencia
 chore(deps): fix mcp<2 pin en config/mcp_servers.json
 fix(quantum): circuit dict no reenviado en segundo add_gate
 ```

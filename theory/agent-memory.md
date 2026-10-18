@@ -11,7 +11,7 @@ kernelspec:
 
 # Memoria de agentes
 
-> **Prerrequisitos:** `langgraph.md.ipynb`. **Objetivo:** decidir qué merece
+> **Prerrequisitos:** `langgraph.md`. **Objetivo:** decidir qué merece
 > recordarse de una cartera entre sesiones y cómo representarlo.
 
 ## 1. Corta vs larga

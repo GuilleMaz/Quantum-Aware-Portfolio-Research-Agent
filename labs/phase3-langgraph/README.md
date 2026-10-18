@@ -4,10 +4,10 @@
 
 | Notebook | Qué te da |
 |---|---|
-| [`theory/langgraph.md.ipynb`](../../theory/langgraph.md.ipynb) | Estado, nodos, edges, **reducers**, routing condicional, checkpointer |
-| [`theory/agents-concepts.md.ipynb`](../../theory/agents-concepts.md.ipynb) | Qué es un agente, ReAct, tool calling |
-| [`theory/mcp-agents.md.ipynb`](../../theory/mcp-agents.md.ipynb) | Patrón supervisor/router, por qué un agente ≠ una llamada |
-| [`theory/qaoa.md.ipynb`](../../theory/qaoa.md.ipynb) | **El corazón físico**: Ising → Hamiltoniano, y §9 por qué no hay ventaja |
+| [`theory/langgraph.md`](../../theory/langgraph.md) | Estado, nodos, edges, **reducers**, routing condicional, checkpointer |
+| [`theory/agents-concepts.md`](../../theory/agents-concepts.md) | Qué es un agente, ReAct, tool calling |
+| [`theory/mcp-agents.md`](../../theory/mcp-agents.md) | Patrón supervisor/router, por qué un agente ≠ una llamada |
+| [`theory/qaoa.md`](../../theory/qaoa.md) | **El corazón físico**: Ising → Hamiltoniano, y §9 por qué no hay ventaja |
 
 > **Orden físico obligatorio:** `quantum-physics.md` → `portfolio-math.md` →
 > `qaoa.md`. El nodo cuántico no tiene sentido sin el mapeo Markowitz → QUBO.

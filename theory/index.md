@@ -21,23 +21,23 @@ kernelspec:
 index  (estás aquí)
   │
   ├─ MCP y herramientas ────────────── Fase 1-2
-  │    ├─ mcp.md.ipynb               El protocolo
-  │    ├─ tool-discovery.md.ipynb    Cómo el LLM elige herramienta
-  │    └─ python-sdk.md.ipynb        Escribir un servidor (SDK v2)
+  │    ├─ mcp.md               El protocolo
+  │    ├─ tool-discovery.md    Cómo el LLM elige herramienta
+  │    └─ python-sdk.md        Escribir un servidor (SDK v2)
   │
   ├─ Agentes y orquestación ────────── Fase 3
-  │    ├─ agents-concepts.md.ipynb   Qué es un agente, ReAct
-  │    ├─ mcp-agents.md.ipynb        Agentes sobre MCP
-  │    └─ langgraph.md.ipynb         Estado, nodos, reducers, routing
+  │    ├─ agents-concepts.md   Qué es un agente, ReAct
+  │    ├─ mcp-agents.md        Agentes sobre MCP
+  │    └─ langgraph.md         Estado, nodos, reducers, routing
   │
   ├─ Física y finanzas ─────────────── Fases 1 y 3
-  │    ├─ quantum-physics.md.ipynb   Cimientos (leer PRIMERO de este bloque)
-  │    ├─ qiskit-basics.md.ipynb     Compuertas, Bell, Aer
-  │    ├─ portfolio-math.md.ipynb    Sharpe, Markowitz, Markowitz → QUBO
-  │    └─ qaoa.md.ipynb              QAOA a fondo + supervivencia
+  │    ├─ quantum-physics.md   Cimientos (leer PRIMERO de este bloque)
+  │    ├─ qiskit-basics.md     Compuertas, Bell, Aer
+  │    ├─ portfolio-math.md    Sharpe, Markowitz, Markowitz → QUBO
+  │    └─ qaoa.md              QAOA a fondo + supervivencia
   │
   └─ Memoria ───────────────────────── Fase 4
-       └─ agent-memory.md.ipynb      Qué merece recordarse
+       └─ agent-memory.md      Qué merece recordarse
 ```
 
 **Orden físico obligatorio:** `quantum-physics` → `portfolio-math` (§7) →
@@ -46,7 +46,7 @@ mapeo sin saber qué es un estado entrelazado.
 
 ## Cómo están escritos
 
-- Formato MyST Markdown (`.md.ipynb`): Markdown plano que se ejecuta con
+- Formato MyST Markdown (`.md`): Markdown plano que se ejecuta con
   `myst-nb`. Diffs legibles en git, render nativo en GitHub.
 - Las salidas se commitean: quien visite el repo ve los resultados sin ejecutar.
 - Cada notebook declara **Prerrequisitos**, **Objetivo**, secciones con celdas

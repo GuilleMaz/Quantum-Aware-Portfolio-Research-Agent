@@ -35,9 +35,9 @@
 
 ## Fase 1 — Fundamentos de MCP
 
-> 📖 Lee antes: [`theory/mcp.md.ipynb`](theory/mcp.md.ipynb),
-> [`theory/tool-discovery.md.ipynb`](theory/tool-discovery.md.ipynb),
-> [`theory/qiskit-basics.md.ipynb`](theory/qiskit-basics.md.ipynb)
+> 📖 Lee antes: [`theory/mcp.md`](theory/mcp.md),
+> [`theory/tool-discovery.md`](theory/tool-discovery.md),
+> [`theory/qiskit-basics.md`](theory/qiskit-basics.md)
 
 ### 1.A — Servidor financiero
 
@@ -86,8 +86,8 @@ correcta ±5%.
 
 ## Fase 2 — Tu primer MCP server
 
-> 📖 Lee antes: [`theory/python-sdk.md.ipynb`](theory/python-sdk.md.ipynb),
-> [`theory/mcp.md.ipynb`](theory/mcp.md.ipynb)
+> 📖 Lee antes: [`theory/python-sdk.md`](theory/python-sdk.md),
+> [`theory/mcp.md`](theory/mcp.md)
 
 - [ ] **2.1** Crear `labs/phase2-own-server/` con `pyproject.toml`
 - [ ] **2.2** `compound_interest(principal, rate, periods)` con anotaciones de
@@ -110,10 +110,10 @@ correcta ±5%.
 
 ## Fase 3 — Orquestación con LangGraph
 
-> 📖 Lee antes: [`theory/langgraph.md.ipynb`](theory/langgraph.md.ipynb),
-> [`theory/agents-concepts.md.ipynb`](theory/agents-concepts.md.ipynb),
-> [`theory/mcp-agents.md.ipynb`](theory/mcp-agents.md.ipynb),
-> [`theory/qaoa.md.ipynb`](theory/qaoa.md.ipynb)
+> 📖 Lee antes: [`theory/langgraph.md`](theory/langgraph.md),
+> [`theory/agents-concepts.md`](theory/agents-concepts.md),
+> [`theory/mcp-agents.md`](theory/mcp-agents.md),
+> [`theory/qaoa.md`](theory/qaoa.md)
 
 ### 3.A — Cliente MCP multi-servidor
 
@@ -155,7 +155,7 @@ persiste entre invocaciones con el mismo `thread_id`.
 
 ## Fase 4 — Memoria y comparación con CrewAI
 
-> 📖 Lee antes: [`theory/agent-memory.md.ipynb`](theory/agent-memory.md.ipynb)
+> 📖 Lee antes: [`theory/agent-memory.md`](theory/agent-memory.md)
 
 - [ ] **4.1** Levantar `mcp-memory-service` (`uvx --from mcp-memory-service
       memory server`)
@@ -176,7 +176,7 @@ persiste entre invocaciones con el mismo `thread_id`.
 ### Papers por verificar
 
 - [ ] Buscar el estado real de los papers de portfolio cuántico post-2025.
-      Las citas de `theory/qaoa.md.ipynb` §9 están verificadas a 2026-10-18;
+      Las citas de `theory/qaoa.md` §9 están verificadas a 2026-10-18;
       esta tarea es mantenerlas al día.
 
 ### Mejoras de robustez

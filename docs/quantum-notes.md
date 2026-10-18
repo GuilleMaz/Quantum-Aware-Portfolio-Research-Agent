@@ -18,8 +18,8 @@
 > resultado científico (`README.md`); no tiene sentido ser deshonesto sobre las
 > herramientas.
 
-**Orden de lectura físico obligatorio:** `theory/quantum-physics.md.ipynb` →
-`theory/portfolio-math.md.ipynb` §7 → `theory/qaoa.md.ipynb`. Este cuaderno es el
+**Orden de lectura físico obligatorio:** `theory/quantum-physics.md` →
+`theory/portfolio-math.md` §7 → `theory/qaoa.md`. Este cuaderno es el
 cuaderno, los notebooks son el desarrollo.
 
 ---
@@ -86,8 +86,8 @@ derivada de las entradas de $Q$.
 
 ### Por qué Σ densa → Hamiltoniano all-to-all → embedding caro
 
-Aquí está el punto que `theory/portfolio-math.md.ipynb` §7 tiene que dejar claro,
-y que `theory/qaoa.md.ipynb` desarrolla:
+Aquí está el punto que `theory/portfolio-math.md` §7 tiene que dejar claro,
+y que `theory/qaoa.md` desarrolla:
 
 **$Q$ es una matriz densa.** En un problema de cartera real, el término de
 covarianza $\Sigma$ es denso: todos los activos correlacionan con todos los demás.
@@ -118,7 +118,7 @@ $10^3$–$10^4$ CNOTs con fidelidad decente. El presupuesto se agota muy rápido
 > ventaja cuántica en portfolio no aparece en la literatura: Stopfer & Wagner
 > (arXiv:2509.17876) resuelven 1000 activos a optimalidad probada en segundos
 > con MIP clásico. La ventaja no se está perdiendo: es que el problema es
-> clásico y pequeño. Ver `theory/qaoa.md.ipynb` §9.
+> clásico y pequeño. Ver `theory/qaoa.md` §9.
 
 ---
 
@@ -190,7 +190,7 @@ cuadráticos, más una corrección lineal en $h$.
 > $\lambda_0$ del problema mal construido, y la identificación del bug es
 > inmediata.
 
-`theory/qaoa.md.ipynb` es donde se deriva esto con cuidado, y donde se
+`theory/qaoa.md` es donde se deriva esto con cuidado, y donde se
 implementa el mapeo de QUBO a Pauli strings. Este cuaderno solo deja constancia
 de que existe y de por qué el $1/4$ está ahí.
 

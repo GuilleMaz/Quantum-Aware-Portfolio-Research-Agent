@@ -11,7 +11,7 @@ kernelspec:
 
 # Python SDK — escribir un servidor (v2)
 
-> **Prerrequisitos:** `mcp.md.ipynb`. **Objetivo:** escribir un servidor MCP con
+> **Prerrequisitos:** `mcp.md`. **Objetivo:** escribir un servidor MCP con
 > el SDK oficial v2 y entender que los tipos de Python **son** el JSON Schema.
 
 ## 1. Un servidor en 15 líneas

@@ -11,8 +11,8 @@ kernelspec:
 
 # Física cuántica — cimientos
 
-> **Prerrequisitos:** ninguno. **Leer antes que** `portfolio-math.md.ipynb` y
-> `qaoa.md.ipynb`. **Objetivo:** el rigor mínimo para no perderte con Qiskit:
+> **Prerrequisitos:** ninguno. **Leer antes que** `portfolio-math.md` y
+> `qaoa.md`. **Objetivo:** el rigor mínimo para no perderte con Qiskit:
 > statevector vs density matrix, entrelazamiento, traza parcial, valor
 > esperado, ruido y NISQ.
 

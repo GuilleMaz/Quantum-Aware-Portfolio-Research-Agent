@@ -11,7 +11,7 @@ kernelspec:
 
 # Qiskit básico — compuertas, Bell, Aer
 
-> **Prerrequisitos:** ninguno de física (ver `quantum-physics.md.ipynb` para el
+> **Prerrequisitos:** ninguno de física (ver `quantum-physics.md` para el
 > fondo). **Objetivo:** construir el estado de Bell a mano y ejecutarlo en el
 > simulador, entendiendo qué devuelve cada backend.
 

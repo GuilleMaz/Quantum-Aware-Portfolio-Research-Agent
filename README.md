@@ -55,7 +55,7 @@ documenta:
 **QAOA aquí es un gran resultado de física y un mal algoritmo de inversión.**
 El valor del proyecto es pedagógico y de rigor: entender el protocolo MCP, la
 orquestación con grafos de estado, y la física de QAOA a fondo. La sección
-`theory/qaoa.md.ipynb` §9 desarrolla los cinco argumentos con referencias
+`theory/qaoa.md` §9 desarrolla los cinco argumentos con referencias
 verificadas.
 
 ---
@@ -111,7 +111,7 @@ uv sync --extra data          # yfinance/pandas para análisis
 #    Cursor: copiar config/clients/cursor.example.json
 
 # 4. Empezar por la teoría, no por el código
-#    Lee theory/index.md.ipynb
+#    Lee theory/index.md
 ```
 
 **Aviso de rendimiento:** el servidor `mcp-qiskit` tarda **67 s en el primer

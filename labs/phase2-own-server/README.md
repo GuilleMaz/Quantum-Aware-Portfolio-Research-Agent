@@ -4,8 +4,8 @@
 
 | Notebook | Qué te da |
 |---|---|
-| [`theory/python-sdk.md.ipynb`](../../theory/python-sdk.md.ipynb) | `MCPServer` v2, tipos → JSON Schema, docstrings como contrato |
-| [`theory/mcp.md.ipynb`](../../theory/mcp.md.ipynb) | El protocolo, por si quieres ver los mensajes en crudo |
+| [`theory/python-sdk.md`](../../theory/python-sdk.md) | `MCPServer` v2, tipos → JSON Schema, docstrings como contrato |
+| [`theory/mcp.md`](../../theory/mcp.md) | El protocolo, por si quieres ver los mensajes en crudo |
 
 > Depende de cerrar la Fase 1. Si no entiendes `list_tools()` → `call_tool()`
 > como cliente, escribir un servidor no significa nada.

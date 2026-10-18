@@ -12,7 +12,7 @@ kernelspec:
 # Matemática de carteras — de Markowitz a QUBO
 
 > **Prerrequisitos:** ninguno (álgebra lineal y numpy). Se puede leer antes que
-> `quantum-physics.md.ipynb`. **Objetivo:** definir retorno, riesgo y Sharpe con
+> `quantum-physics.md`. **Objetivo:** definir retorno, riesgo y Sharpe con
 > propiedad, y derivar por qué la cartera **discreta** es QUBO.
 
 ## 1. Retornos

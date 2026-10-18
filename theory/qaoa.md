@@ -11,8 +11,8 @@ kernelspec:
 
 # QAOA — el corazón físico
 
-> **Prerrequisitos:** `portfolio-math.md.ipynb` (§7, el QUBO) y
-> `quantum-physics.md.ipynb` (estado, valor esperado, CPTP). **Objetivo:**
+> **Prerrequisitos:** `portfolio-math.md` (§7, el QUBO) y
+> `quantum-physics.md` (estado, valor esperado, CPTP). **Objetivo:**
 > construir QAOA como objeto físico y terminar con la conclusión honesta sobre
 > por qué aquí no hay ventaja.
 

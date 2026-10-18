@@ -156,19 +156,19 @@ llegar; si falla, es un excelente ejercicio de diagnóstico.
 Los notebooks son **transversales**, no están atados a una fase. Ruta:
 
 ```
-1. theory/index.md.ipynb          Ruta de lectura y glosario
-2. theory/mcp.md.ipynb            El protocolo            ┐
-3. theory/tool-discovery.md.ipynb Cómo elige el LLM       ├ Fase 1-2
-4. theory/python-sdk.md.ipynb     Escribir un server      ┘
-5. theory/agents-concepts.md.ipynb  Qué es un agente      ┐
-6. theory/mcp-agents.md.ipynb     ReAct, tool calling     ├ Fase 3
-7. theory/langgraph.md.ipynb      Estado, nodos, reducers ┘
-8. theory/quantum-physics.md.ipynb   Cimientos            ┐
-9. theory/qiskit-basics.md.ipynb     Compuertas y Aer      ├ Fase 1
-10. theory/portfolio-math.md.ipynb    Sharpe, Markowitz,  │
+1. theory/index.md          Ruta de lectura y glosario
+2. theory/mcp.md            El protocolo            ┐
+3. theory/tool-discovery.md Cómo elige el LLM       ├ Fase 1-2
+4. theory/python-sdk.md     Escribir un server      ┘
+5. theory/agents-concepts.md  Qué es un agente      ┐
+6. theory/mcp-agents.md     ReAct, tool calling     ├ Fase 3
+7. theory/langgraph.md      Estado, nodos, reducers ┘
+8. theory/quantum-physics.md   Cimientos            ┐
+9. theory/qiskit-basics.md     Compuertas y Aer      ├ Fase 1
+10. theory/portfolio-math.md    Sharpe, Markowitz,  │
                                        de Markowitz a QUBO │ Fase 3
-11. theory/qaoa.md.ipynb              QAOA a fondo        ┘
-12. theory/agent-memory.md.ipynb      Memoria de agentes   Fase 4
+11. theory/qaoa.md              QAOA a fondo        ┘
+12. theory/agent-memory.md      Memoria de agentes   Fase 4
 ```
 
 **Orden de lectura físico obligatorio: 8 → 10 → 11.** El Hamiltonian de coste

@@ -29,8 +29,8 @@ ejemplo para 3 clientes MCP.
 **Fase 1 (Fundamentos de MCP):** preparada, no iniciada. La carpeta
 `labs/phase1-mcp-basics/` existe con su README y checklist.
 
-**Antes de la Fase 1:** leer `theory/index.md.ipynb` para la ruta de lectura, y
-`theory/mcp.md.ipynb` + `theory/qiskit-basics.md.ipynb` para el MCP y Qiskit.
+**Antes de la Fase 1:** leer `theory/index.md` para la ruta de lectura, y
+`theory/mcp.md` + `theory/qiskit-basics.md` para el MCP y Qiskit.
 
 ---
 
@@ -46,7 +46,7 @@ ejemplo para 3 clientes MCP.
 | Persistencia | `langgraph-checkpoint-sqlite` | ≥3.1 | `AsyncSqliteSaver` |
 | Modelos | `pydantic` | ≥2.9 | Solo para datos, no para el estado del grafo |
 | Cuántico | `qiskit` + `qiskit-aer` | ≥2.3 / ≥0.17 | **Directo**, no vía MCP |
-| Notebooks | `myst-nb` | ≥1.4 | Markdown ejecutable, `.md.ipynb` |
+| Notebooks | `myst-nb` | ≥1.4 | Markdown ejecutable, `.md` |
 | Análisis | `yfinance`, `pandas`, `numpy`, `scipy` | — | Solo para `theory/` y utilidades |
 
 ### Servidores MCP (todos externos, todos Alpha)
@@ -71,10 +71,10 @@ Curso completo. Ruta de lectura: `index` → `mcp`/`tool-discovery` →
 `quantum-physics` → `qiskit-basics` → `portfolio-math` → `qaoa` →
 `agent-memory`.
 
-**Los tres de física son los que más interesan al usuario:** `quantum-physics.md.ipynb`
+**Los tres de física son los que más interesan al usuario:** `quantum-physics.md`
 (statevector vs density matrix, entrelazamiento, traza parcial, canales CPTP,
-T1/T2), `portfolio-math.md.ipynb` (Sharpe, Markowitz, Markowitz → QUBO),
-`qaoa.md.ipynb` (Ising → Hamiltoniano, adiabaticidad, supervivencia).
+T1/T2), `portfolio-math.md` (Sharpe, Markowitz, Markowitz → QUBO),
+`qaoa.md` (Ising → Hamiltoniano, adiabaticidad, supervivencia).
 
 ### `labs/` — 4 carpetas de fase
 Cuaderno desechable. Se congela al cerrar cada fase.
@@ -130,7 +130,7 @@ ejemplos para OpenCode, Claude Desktop y Cursor.
 ## Aviso de Honestidad Científica
 
 Este proyecto **no** demuestra ventaja cuántica en optimización de carteras, y
-`README.md` y `theory/qaoa.md.ipynb` §9 lo dicen explícitamente con fuentes.
+`README.md` y `theory/qaoa.md` §9 lo dicen explícitamente con fuentes.
 
 Con 5–20 activos, $2^{20}$ carteras se enumeran vectorialmente en <1 s.
 Stopfer & Wagner (2025) resolvieron 270 instancias reales hasta 1000 activos

@@ -11,7 +11,7 @@ kernelspec:
 
 # Tool discovery — cómo el LLM elige herramienta
 
-> **Prerrequisitos:** `mcp.md.ipynb`. **Objetivo:** entender qué información usa
+> **Prerrequisitos:** `mcp.md`. **Objetivo:** entender qué información usa
 > el modelo para decidir, y por qué el texto de la herramienta importa más que
 > su nombre.
 
@@ -95,7 +95,7 @@ verá pobre.
 
 <details><summary>1. Dos herramientas se llaman igual en dos servidores. ¿Qué pasa?</summary>
 `ClientSessionGroup` lanza error duro en vez de sobrescribir. Hay que prefijar
-(p. ej. "financial.get_price"). Ver `mcp-agents.md.ipynb`.
+(p. ej. "financial.get_price"). Ver `mcp-agents.md`.
 </details>
 
 <details><summary>2. ¿Por qué scan_universe es mejor que N llamadas a score_ticker?</summary>

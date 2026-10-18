@@ -11,7 +11,7 @@ kernelspec:
 
 # Agentes sobre MCP
 
-> **Prerrequisitos:** `mcp.md.ipynb`, `agents-concepts.md.ipynb`.
+> **Prerrequisitos:** `mcp.md`, `agents-concepts.md`.
 > **Objetivo:** conectar N servidores MCP a un agente: fusionar herramientas,
 > evitar colisiones y tratar errores como observaciones.
 
