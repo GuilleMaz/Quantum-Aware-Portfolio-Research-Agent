@@ -26,11 +26,13 @@ los 4 archivos raíz, `project-memory/`, `docs/`, `config/`, 12 notebooks en
 `theory/`, 4 carpetas en `labs/`, estructura vacía de `src/`, y configs de
 ejemplo para 3 clientes MCP.
 
-**Fase 1 (Fundamentos de MCP):** preparada, no iniciada. La carpeta
-`labs/phase1-mcp-basics/` existe con su README y checklist.
+**Fase 1 (Fundamentos de MCP):** **cerrada** (2026-10-18). Evidencia en
+`labs/phase1-mcp-basics/snapshots/`: 42 tools financieras, 13 de qiskit,
+Bell `{"00": 519, "11": 505}` (1024 shots), stateless demostrado,
+fallo silencioso de `rx` sin `params` reproducido.
 
-**Antes de la Fase 1:** leer `theory/index.md` para la ruta de lectura, y
-`theory/mcp.md` + `theory/qiskit-basics.md` para el MCP y Qiskit.
+**Siguiente:** Fase 2 — escribir un MCP server propio (`compound_interest`,
+`loan_emi`, `npv`). Leer `theory/python-sdk.md` antes.
 
 ---
 
@@ -99,20 +101,19 @@ ejemplos para OpenCode, Claude Desktop y Cursor.
       documentación upstream, que está desactualizada en 2 casos).
 - [x] 9 decisiones técnicas documentadas en `decisions.md`.
 - [x] 6 referencias académicas verificadas contra Crossref/OpenAlex/arXiv.
+- [x] **Fase 1** — Ciclo MCP completo contra 2 servidores externos: 42 + 13
+      tools listadas, 3 llamadas reales parseadas (doble encoding), handshake
+      `initialize` crudo, circuito de Bell (distribución correcta), stateless y
+      fallo silencioso de `rx` reproducidos y documentados.
 
 ---
 
 ## Pendientes
 
-### Fase 1 (inmediato)
-- [ ] `uv sync` y verificar el venv
-- [ ] Handshake `initialize` manual
-- [ ] Listar las 42 tools financieras → `snapshots/`
-- [ ] 3 llamadas reales a tools (precio, fundamentales, momentum)
-- [ ] Circuito de Bell vía `mcp-qiskit` y verificar la distribución
-- [ ] **Descubrir que `mcp-qiskit` es stateless** (reenviar el dict)
-- [ ] Conectar en OpenCode y Claude Desktop
-- [ ] Cerrar la fase y promover a `src/`
+### Fase 1 — cerrada
+- [x] Todas las tareas 1.1–1.14, 1.16 y 1.19 completadas.
+- [ ] 1.15 (Claude Desktop no instalado; ejemplo de config disponible).
+- [ ] 1.17–1.18 (verificación interactiva con el LLM en OpenCode).
 
 ### Fases 2-4
 - [ ] Fase 2: MCP server propio (`compound_interest`, `loan_emi`, `npv`)
