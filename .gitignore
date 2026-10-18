@@ -1,0 +1,120 @@
+# ---------------------------------------------------------------------------
+# SECRETOS — NUNCA commitear
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+.secrets/
+opencode.local.json
+
+# ---------------------------------------------------------------------------
+# PYTHON
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Entornos virtuales
+.venv/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter
+.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+**/.ipynb_checkpoints/
+exec_count*
+
+# mypy / ruff / pytest
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+.hypothesis/
+
+# ---------------------------------------------------------------------------
+# DATOS Y SALIDAS DEL PROYECTO
+# ---------------------------------------------------------------------------
+# Cache local de precios y datos de mercado
+data/
+!data/.gitkeep
+
+# Informes y resultados generados
+outputs/
+!outputs/.gitkeep
+
+# Artefactos de ejecución cuántica
+*.qasm
+*.pulse
+qiskit-*.json
+job_*.json
+
+# Checkpoints de LangGraph
+*.db
+*.sqlite
+*.sqlite3
+checkpoints.db*
+
+# SQLite del servidor financiero
+*.financial-mcp/
+financial_mcp.db
+
+# ---------------------------------------------------------------------------
+# SISTEMAS OPERATIVOS / EDITORES
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.example.json
+.idea/
+*.swp
+*.swo
+*~
+
+# ---------------------------------------------------------------------------
+# OTROS
+# ---------------------------------------------------------------------------
+node_modules/
+dist/
+.cache/
+*.log
+logs/
+npm-debug.log*
+scratch/
+tmp/
+.temp/

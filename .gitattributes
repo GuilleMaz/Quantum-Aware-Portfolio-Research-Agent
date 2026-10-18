@@ -1,0 +1,31 @@
+# Normalización de finales de línea
+# LF en el repo, CRLF en el checkout de Windows.
+* text=auto
+
+*.py    text eol=lf
+*.md    text eol=lf
+*.toml  text eol=lf
+*.json  text eol=lf
+*.jsonc text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.txt   text eol=lf
+
+# Notebooks: LF obligatorio. Git normaliza los .ipynb para que los diffs
+# no aparezcan corruptos por finales de línea mezclados.
+*.ipynb text eol=lf
+
+# Scripts de shell siempre LF, se ejecutan en bash/WSL.
+*.sh    text eol=lf
+
+# Binarios: nunca tocar.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.pdf   binary
+*.sqlite binary
+*.sqlite3 binary
+*.db    binary
+*.parquet binary
+*.feather binary

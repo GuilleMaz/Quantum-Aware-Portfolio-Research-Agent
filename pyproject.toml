@@ -1,0 +1,158 @@
+[project]
+name = "quantum-aware-portfolio"
+version = "0.1.0"
+description = "Multi-agent system combining financial analysis with quantum optimization (QAOA) for portfolio research."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { text = "MIT" }
+authors = [{ name = "GuilleMaz" }]
+keywords = ["mcp", "agents", "langgraph", "quantum", "qaoa", "portfolio", "finance"]
+
+dependencies = [
+    # --- Orquestación ---
+    "langgraph>=1.2",
+    "langchain-core>=1.0",
+
+    # --- MCP (SDK oficial v2; FastMCP fue renombrado a MCPServer) ---
+    "mcp>=2.3.0",
+    "anyio>=4.0",
+
+    # --- Modelos de datos ---
+    "pydantic>=2.9",
+
+    # --- Persistencia de checkpoints ---
+    "langgraph-checkpoint-sqlite>=3.1",
+
+    # --- CLI ---
+    "typer>=0.12",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+# Cuántico: motor real. El MCP server mcp-qiskit sirve para aprender el
+# protocolo, pero para QAOA, valores esperados y ruido usamos Qiskit directo.
+quantum = [
+    "qiskit>=2.3",
+    "qiskit-aer>=0.17",
+    "qiskit-algorithms>=0.3",
+    "matplotlib>=3.8",
+]
+
+# Notebooks de theory/
+notebooks = [
+    "myst-nb>=1.4",
+    "myst-parser>=5.1",
+    "jupyter-book>=2.1",
+    "ipykernel>=6.29",
+    "nbconvert>=7.16",
+    "nbformat>=5.10",
+    "matplotlib>=3.8",
+    "plotly>=5.24",
+]
+
+# Análisis de mercado para los notebooks y utilidades
+data = [
+    "yfinance>=0.2",
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "scipy>=1.13",
+    "matplotlib>=3.8",
+]
+
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.7",
+    "mypy>=1.13",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.7",
+    "mypy>=1.13",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/quantum_portfolio"]
+
+# ---------------------------------------------------------------------------
+# RUFF
+# ---------------------------------------------------------------------------
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "labs", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle
+    "F",    # pyflakes
+    "I",    # isort
+    "UP",   # pyupgrade
+    "B",    # bugbear
+    "SIM",  # simplify
+    "ANN",  # anotaciones
+    "ASYNC",
+]
+ignore = [
+    "E501",    # line-length ya lo aplica ruff
+    "ANN401",  # Any es legítimo en fronteras MCP
+    "B008",    # Depends() en FastAPI-style, no lo usamos pero molesta
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Los labs son experiments: pueden ser feos a propósito.
+"labs/**" = ["ANN", "D", "E402", "F841", "SIM", "B"]
+# Los notebooks ejecutan codigo imperativo.
+"theory/**" = ["ANN", "E402", "F841", "B", "SIM"]
+"notebooks/**" = ["ANN", "E402", "F841", "B", "SIM"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["quantum_portfolio"]
+
+# ---------------------------------------------------------------------------
+# MYPY
+# ---------------------------------------------------------------------------
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+mypy_path = "src"
+
+[[tool.mypy.overrides]]
+module = ["labs.*", "theory.*"]
+disallow_untyped_defs = false
+
+# ---------------------------------------------------------------------------
+# PYTEST
+# ---------------------------------------------------------------------------
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
+addopts = "-ra --strict-markers"
+markers = [
+    "integration: requiere servidores MCP externos (marcar con -m integration)",
+    "quantum: requiere qiskit instalado",
+    "slow: tests lentos",
+]
+
+# ---------------------------------------------------------------------------
+# MYST-NB
+# ---------------------------------------------------------------------------
+[tool.mystnb]
+# Los notebooks se ejecutan en CI, no en cada save.
+execution_mode = "off"
+# Las salidas se commitean: renderizan en GitHub sin ejecutar nada.
+nb_render_image_options = { "embed_images": true }
