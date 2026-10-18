@@ -1,0 +1,44 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "financial": {
+      "type": "local",
+      "command": [
+        "C:\\Users\\guill\\.local\\bin\\uvx.exe",
+        "--from",
+        "financial-mcp-server",
+        "--with",
+        "mcp<2",
+        "financial-mcp"
+      ],
+      "enabled": true,
+      "environment": {
+        "FRED_API_KEY": "{env:FRED_API_KEY}"
+      },
+      "timeout": 60000
+    },
+    "qiskit": {
+      "type": "local",
+      "command": [
+        "C:\\Users\\guill\\.local\\bin\\uvx.exe",
+        "--from",
+        "mcp-qiskit[mcp]",
+        "mcp-qiskit"
+      ],
+      "enabled": true,
+      "timeout": 60000
+    },
+    "memory": {
+      "type": "local",
+      "command": [
+        "C:\\Users\\guill\\.local\\bin\\uvx.exe",
+        "--from",
+        "mcp-memory-service",
+        "memory",
+        "server"
+      ],
+      "enabled": false,
+      "timeout": 60000
+    }
+  }
+}

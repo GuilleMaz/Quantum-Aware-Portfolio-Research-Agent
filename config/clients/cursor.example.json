@@ -1,0 +1,36 @@
+{
+  "//": "EJEMPLO para Cursor -> copiar a .cursor/mcp.json",
+  "//2": "SINTAXIS DE CURSOR (difiere de OpenCode): clave raiz mcpServers, REQUIERE type:stdio explicito, command es STRING, e interpolacion con ${env:VAR} (con dollar, al reves de OpenCode que usa {env:VAR}).",
+  "//3": "Cursor SOPORTA envFile: .env en la raiz del proyecto se carga automaticamente.",
+  "//4": "Ruta ABSOLUTA a uvx.exe obligatoria: Cursor se lanza desde el menu de Inicio con PATH minimo.",
+  "mcpServers": {
+    "financial": {
+      "//": "El --with mcp<2 es obligatorio (FastMCP -> MCPServer en mcp 2.x).",
+      "type": "stdio",
+      "command": "C:\\TU\\USUARIO\\.local\\bin\\uvx.exe",
+      "args": ["--from", "financial-mcp-server", "--with", "mcp<2", "financial-mcp"],
+      "env": {
+        "FRED_API_KEY": "${env:FRED_API_KEY}"
+      },
+      "envFile": "${workspaceFolder}/.env"
+    },
+    "qiskit": {
+      "//": "El extra [mcp] es obligatorio (trae fastmcp).",
+      "type": "stdio",
+      "command": "C:\\TU\\USUARIO\\.local\\bin\\uvx.exe",
+      "args": ["--from", "mcp-qiskit[mcp]", "mcp-qiskit"],
+      "env": {
+        "IBM_QUANTUM_TOKEN": "${env:IBM_QUANTUM_TOKEN}"
+      },
+      "envFile": "${workspaceFolder}/.env"
+    },
+    "memory": {
+      "//": "Desactivado por defecto hasta la Fase 4. Sustituye a mem0-mcp-server (repo archivado).",
+      "type": "stdio",
+      "command": "C:\\TU\\USUARIO\\.local\\bin\\uvx.exe",
+      "args": ["--from", "mcp-memory-service", "memory", "server"],
+      "env": {},
+      "envFile": "${workspaceFolder}/.env"
+    }
+  }
+}
